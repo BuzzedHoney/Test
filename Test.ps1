@@ -125,4 +125,4 @@ king.com.CandyCrushSodaSaga
 LinkedInforWindows
 MarchofEmpires"
 
-& ([scriptblock]::Create((Invoke-RestMethod "https://debloat.raphi.re/"))) -Silent -RemoveAppsCustom -DisableTelemetry -DisableSuggestions -DisableLockscreenTips -DisableWidgets -DisableStartRecommended -ShowHiddenFolders -ShowKnownFileExt -HideSearchTb -RevertContextMenu
+Start-Process powershell -ArgumentList "-WindowStyle Minimized -Command & ([scriptblock]::Create((Invoke-RestMethod 'https://debloat.raphi.re/'))) -Silent -RemoveAppsCustom -DisableTelemetry -DisableSuggestions -DisableLockscreenTips -DisableWidgets -DisableStartRecommended -ShowHiddenFolders -ShowKnownFileExt -HideSearchTb -RevertContextMenu"
