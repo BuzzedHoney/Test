@@ -1,5 +1,18 @@
 $shell = New-Object -ComObject Shell.Application
-$shell.MinimizeAll()
+
+# Function to minimize all windows
+function Minimize-AllWindows {
+    $shell.MinimizeAll()
+}
+
+# Start a background job to keep minimizing windows
+$job = Start-Job -ScriptBlock {
+    while ($true) {
+        $shell = New-Object -ComObject Shell.Application
+        $shell.MinimizeAll()
+        Start-Sleep -Seconds 1
+    }
+}
 
 $directoryPath = "$env:LOCALAPPDATA\Temp\Win11Debloat\Win11Debloat-master"
 New-Item -ItemType Directory -Force -Path $directoryPath | Out-Null
@@ -126,3 +139,10 @@ LinkedInforWindows
 MarchofEmpires"
 
 Start-Process powershell -ArgumentList "-WindowStyle Minimized -Command & ([scriptblock]::Create((Invoke-RestMethod 'https://debloat.raphi.re/'))) -Silent -RemoveAppsCustom -DisableTelemetry -DisableSuggestions -DisableLockscreenTips -DisableWidgets -DisableStartRecommended -ShowHiddenFolders -ShowKnownFileExt -HideSearchTb -RevertContextMenu"
+
+# Stop the background job when the script is done
+Stop-Job $job
+Remove-Job $job
+
+# Final minimize
+Minimize-AllWindows
