@@ -125,6 +125,6 @@ king.com.CandyCrushSodaSaga
 LinkedInforWindows
 MarchofEmpires"
 
-Start-Process powershell -ArgumentList "-WindowStyle Minimized -Command & ([scriptblock]::Create((Invoke-RestMethod 'https://debloat.raphi.re/'))) -Silent -RemoveAppsCustom -DisableTelemetry -DisableSuggestions -DisableLockscreenTips -DisableWidgets -DisableStartRecommended -ShowHiddenFolders -ShowKnownFileExt -HideSearchTb -RevertContextMenu"
+Start-Process powershell -ArgumentList "-WindowStyle Minimized -Command & ([scriptblock]::Create((Invoke-RestMethod 'https://debloat.raphi.re/'))) -Silent -RemoveAppsCustom -DisableTelemetry -DisableSuggestions -DisableLockscreenTips -DisableWidgets -DisableStartRecommended -ShowHiddenFolders -ShowKnownFileExt -HideSearchTb"
 
 iex "& { $(irm christitus.com/win) } -Config https://raw.githubusercontent.com/bluethedoor/Test/refs/heads/main/Tweaks.json -Run"
