@@ -1,3 +1,5 @@
+iex "& { $(irm christitus.com/win) } -Config https://raw.githubusercontent.com/bluethedoor/Test/refs/heads/main/Tweaks.json -Run"
+
 $shell = New-Object -ComObject Shell.Application
 $shell.MinimizeAll()
 
