@@ -1,1 +1,8 @@
-
+{
+  "Install": [],
+  "WPFTweaks": [
+    "WPFTweaksDisableipsix"
+  ],
+  "WPFFeature": [],
+  "WPFInstall": []
+}
