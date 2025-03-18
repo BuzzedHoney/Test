@@ -1,11 +1,6 @@
-# Set execution preferences
-$ProgressPreference = 'SilentlyContinue'
-$ErrorActionPreference = 'SilentlyContinue'
+$shell = New-Object -ComObject Shell.Application
+$shell.MinimizeAll()
 
-# Minimize all windows
-(New-Object -ComObject Shell.Application).MinimizeAll()
-
-# Create directory and custom apps list
 $directoryPath = "$env:LOCALAPPDATA\Temp\Win11Debloat\Win11Debloat-master"
 New-Item -ItemType Directory -Force -Path $directoryPath | Out-Null
 
