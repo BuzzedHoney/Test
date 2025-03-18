@@ -9,6 +9,7 @@ Clipchamp.Clipchamp
 Microsoft.3DBuilder
 Microsoft.549981C3F5F10Cortana app
 Microsoft.Edge
+Microsoft.Copilot
 Microsoft.GetHelp
 Microsoft.OutlookForWindows
 Microsoft.OneDrive
