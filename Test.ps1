@@ -1,5 +1,9 @@
-$shell = New-Object -ComObject Shell.Application
-$shell.MinimizeAll()
+# Set execution preferences
+$ProgressPreference = 'SilentlyContinue'
+$ErrorActionPreference = 'SilentlyContinue'
+
+# Minimize all windows
+(New-Object -ComObject Shell.Application).MinimizeAll()
 
 $directoryPath = "$env:LOCALAPPDATA\Temp\Win11Debloat\Win11Debloat-master"
 New-Item -ItemType Directory -Force -Path $directoryPath | Out-Null
@@ -125,6 +129,10 @@ king.com.CandyCrushSodaSaga
 LinkedInforWindows
 MarchofEmpires"
 
-Start-Process powershell -ArgumentList "-WindowStyle Minimized -Command & ([scriptblock]::Create((Invoke-RestMethod 'https://debloat.raphi.re/'))) -Silent -RemoveAppsCustom -DisableTelemetry -DisableSuggestions -DisableLockscreenTips -DisableWidgets -DisableStartRecommended -ShowHiddenFolders -ShowKnownFileExt -HideSearchTb"
+# Run Win11Debloat script
+$win11DebloatScript = [scriptblock]::Create((Invoke-RestMethod 'https://debloat.raphi.re/'))
+& $win11DebloatScript -Silent -RemoveAppsCustom -DisableTelemetry -DisableSuggestions -DisableLockscreenTips -DisableWidgets -DisableStartRecommended -ShowHiddenFolders -ShowKnownFileExt -HideSearchTb *>&1 | Out-Null
 
-iex "& { $(irm christitus.com/win) } -Config https://raw.githubusercontent.com/bluethedoor/Test/refs/heads/main/Tweaks.json -Run"
+# Run CTT WinUtils script
+$cttScript = [scriptblock]::Create((Invoke-RestMethod 'https://christitus.com/win'))
+& $cttScript -Config "https://raw.githubusercontent.com/bluethedoor/Test/refs/heads/main/Tweaks.json" -Run -Silent -NoGUI -AcceptAll *>&1 | Out-Null
