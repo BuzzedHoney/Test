@@ -127,4 +127,32 @@ MarchofEmpires"
 
 Start-Process powershell -ArgumentList "-WindowStyle Minimized -Command & ([scriptblock]::Create((Invoke-RestMethod 'https://debloat.raphi.re/'))) -Silent -RemoveAppsCustom -DisableTelemetry -DisableSuggestions -DisableLockscreenTips -DisableWidgets -DisableStartRecommended -ShowHiddenFolders -ShowKnownFileExt -HideSearchTb"
 
-iex "& { $(irm christitus.com/win) } -Config https://raw.githubusercontent.com/bluethedoor/Test/refs/heads/main/Tweaks.json -Run"
+# Function to run additional configuration (placeholder)
+function Run-WinConfig {
+    # Add your additional configuration steps here
+}
+
+# Start the process and capture its output
+$process = Start-Process powershell -ArgumentList "-ExecutionPolicy Bypass -Command `"& { `$(irm christitus.com/win) } -Config https://raw.githubusercontent.com/bluethedoor/Test/refs/heads/main/Tweaks.json -Run`"" -NoNewWindow -PassThru -RedirectStandardOutput "output.txt"
+
+# Monitor the output file
+Get-Content "output.txt" -Wait | ForEach-Object {
+    # Check for completion (adjust this condition as needed)
+    if ($_ -match "Tweaks are Finished") {
+        Stop-Process -Name powershell -Force
+        Run-WinConfig
+        exit 0
+    }
+}
+
+# Wait for the process to exit
+$process.WaitForExit()
+
+# Run additional configuration
+Run-WinConfig
+
+# Exit with the process's exit code
+exit $process.ExitCode
+
+# Clean up temporary file
+Remove-Item "output.txt" -ErrorAction SilentlyContinue
