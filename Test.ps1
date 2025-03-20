@@ -7,30 +7,15 @@ New-Item -ItemType Directory -Force -Path $directoryPath | Out-Null
 Set-Content -Path "$directoryPath\CustomAppsList" -Value "
 Clipchamp.Clipchamp
 Microsoft.3DBuilder
-Microsoft.549981C3F5F10Cortana app
-Microsoft.Edge
+Microsoft.549981C3F5F10
 Microsoft.Copilot
-Microsoft.GetHelp
-Microsoft.OutlookForWindows
-Microsoft.OneDrive
-Microsoft.People
-Microsoft.Whiteboard
-Microsoft.windowscommunicationsapps
-Microsoft.YourPhone
-MicrosoftWindows.CrossDevicePhone
-Microsoft.PowerAutomateDesktop
-Microsoft.RemoteDesktop
-Windows.DevHome
-MicrosoftWindows.Client.WebExperience
-Microsoft.ApplicationCompatibilityEnhancements
-Microsoft.WidgetsPlatformRuntime
-MicrosoftCorporationII.QuickAssist
+Microsoft.Edge
 Microsoft.BingFinance
 Microsoft.BingFoodAndDrink 
 Microsoft.BingHealthAndFitness
 Microsoft.BingNews
-Microsoft.BingSearchBing
-Microsoft.BingSports 
+Microsoft.BingSearch
+Microsoft.BingSports
 Microsoft.BingTranslator
 Microsoft.BingTravel
 Microsoft.BingWeather
@@ -60,6 +45,23 @@ Microsoft.ZuneVideo
 MicrosoftCorporationII.MicrosoftFamily
 MicrosoftTeams
 MSTeams
+Microsoft.GetHelp
+Microsoft.MSPaint
+Microsoft.OutlookForWindows
+Microsoft.OneDrive
+Microsoft.Paint
+Microsoft.People
+Microsoft.Whiteboard
+Microsoft.windowscommunicationsapps
+Microsoft.YourPhone
+MicrosoftWindows.CrossDevice
+Microsoft.PowerAutomateDesktop
+Microsoft.RemoteDesktop
+Windows.DevHome
+MicrosoftWindows.Client.WebExperience
+Microsoft.ApplicationCompatibilityEnhancements
+Microsoft.WidgetsPlatformRuntime
+MicrosoftCorporationII.QuickAssist
 ACGMediaPlayer
 ActiproSoftwareLLC
 AdobeSystemsIncorporated.AdobePhotoshopExpress
@@ -109,7 +111,8 @@ Twitter
 Viber
 WinZipUniversal
 Wunderlist
-XING"
+XING
+"
 
 Start-Process powershell -ArgumentList "-WindowStyle Minimized -Command & ([scriptblock]::Create((Invoke-RestMethod 'https://debloat.raphi.re/'))) -Silent -RemoveAppsCustom -DisableTelemetry -DisableSuggestions -DisableLockscreenTips -DisableWidgets -DisableStartRecommended -ShowHiddenFolders -ShowKnownFileExt -HideSearchTb"
 
