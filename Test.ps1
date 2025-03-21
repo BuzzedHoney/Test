@@ -1,3 +1,5 @@
+iex "& { $(irm christitus.com/win) } -Config https://raw.githubusercontent.com/bluethedoor/Test/refs/heads/main/Tweaks.json -Run"
+
 $directoryPath = "$env:LOCALAPPDATA\Temp\Win11Debloat\Win11Debloat-master"
 New-Item -ItemType Directory -Force -Path $directoryPath | Out-Null
 
