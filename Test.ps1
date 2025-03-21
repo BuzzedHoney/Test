@@ -4,6 +4,7 @@ $directoryPath = "$env:LOCALAPPDATA\Temp\Win11Debloat\Win11Debloat-master"
 New-Item -ItemType Directory -Force -Path $directoryPath | Out-Null
 
 Set-Content -Path "$directoryPath\CustomAppsList" -Value "
+Microsoft.ScreenSketch
 Clipchamp.Clipchamp
 Microsoft.3DBuilder
 Microsoft.549981C3F5F10
