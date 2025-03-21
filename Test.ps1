@@ -1,6 +1,3 @@
-$shell = New-Object -ComObject Shell.Application
-$shell.MinimizeAll()
-
 $directoryPath = "$env:LOCALAPPDATA\Temp\Win11Debloat\Win11Debloat-master"
 New-Item -ItemType Directory -Force -Path $directoryPath | Out-Null
 
