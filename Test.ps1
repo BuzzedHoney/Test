@@ -101,7 +101,6 @@ Shazam
 Sidia.LiveWallpaper
 SlingTV
 Speed Test
-Spotify
 TikTok
 TuneInRadio
 Twitter
