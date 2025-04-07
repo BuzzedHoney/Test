@@ -29,7 +29,5 @@
     "WPFFeatureDisableSearchSuggestions",
     "WPFFeatureshyperv",
     "WPFFeaturesSandbox"
-  ],
-  "Install": [],
-  "WPFInstall": []
+  ]
 }
