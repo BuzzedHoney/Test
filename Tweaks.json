@@ -1,35 +1,35 @@
 {
-     "WPFTweaks":  [
-                       "WPFTweaksRemoveHomeGallery",
-                       "WPFTweaksRemoveEdge",
-                       "WPFTweaksEndTaskOnTaskbar",
-                       "WPFTweaksDeleteTempFiles",
-                       "WPFTweaksDisplay",
-                       "WPFTweaksDisableLMS1",
-                       "WPFTweaksTeredo",
-                       "WPFTweaksPowershell7Tele",
-                       "WPFTweaksAH",
-                       "WPFTweaksServices",
-                       "WPFTweaksDisableFSO",
-                       "WPFTweaksConsumerFeatures",
-                       "WPFTweaksRemoveCopilot",
-                       "WPFTweaksDisableipsix",
-                       "WPFTweaksWifi",
-                       "WPFTweaksTele",
-                       "WPFTweaksDisableBGapps",
-                       "WPFTweaksHiber",
-                       "WPFTweaksHome",
-                       "WPFTweaksRemoveOnedrive",
-                       "WPFTweaksRightClickMenu",
-                       "WPFTweaksRecallOff",
-                       "WPFTweaksLoc",
-                       "WPFTweaksDisableWpbtExecution",
-                       "WPFTweaksIPv46",
-                       "WPFTweaksDVR"
-                   ],
-     "WPFFeature":  [
-                        "WPFFeatureDisableSearchSuggestions",
-                        "WPFFeaturesSandbox",
-                        "WPFFeatureshyperv"
-                    ]
- }
+  "WPFTweaks": [
+    "WPFTweaksLoc",
+    "WPFTweaksDVR",
+    "WPFTweaksRemoveCopilot",
+    "WPFTweaksDisableFSO",
+    "WPFTweaksServices",
+    "WPFTweaksTele",
+    "WPFTweaksWifi",
+    "WPFTweaksDiskCleanup",
+    "WPFTweaksHiber",
+    "WPFTweaksEdgeDebloat",
+    "WPFTweaksConsumerFeatures",
+    "WPFTweaksDeleteTempFiles",
+    "WPFTweaksRecallOff",
+    "WPFTweaksAH",
+    "WPFTweaksPowershell7Tele",
+    "WPFTweaksIPv46",
+    "WPFTweaksRemoveEdge",
+    "WPFTweaksDisableLMS1",
+    "WPFTweaksHome",
+    "WPFTweaksEndTaskOnTaskbar",
+    "WPFTweaksDisableWpbtExecution",
+    "WPFTweaksDisableBGapps",
+    "WPFTweaksDisplay",
+    "WPFTweaksRemoveOnedrive"
+  ],
+  "WPFFeature": [
+    "WPFFeatureDisableSearchSuggestions",
+    "WPFFeatureshyperv",
+    "WPFFeaturesSandbox"
+  ],
+  "Install": [],
+  "WPFInstall": []
+}
