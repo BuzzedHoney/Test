@@ -1,25 +1,6 @@
 {
   "WPFTweaks": [
-                      "WPFTweaksEndTaskOnTaskbar",
-                      "WPFTweaksDeleteTempFiles",
-                      "WPFTweaksDisplay",
-                      "WPFTweaksDisableLMS1",
-                      "WPFTweaksPowershell7Tele",
-                      "WPFTweaksAH",
-                      "WPFTweaksServices",
-                      "WPFTweaksDisableFSO",
-                      "WPFTweaksConsumerFeatures",
-                      "WPFTweaksWifi",
-                      "WPFTweaksTele",
-                      "WPFTweaksDisableBGapps",
-                      "WPFTweaksHiber",
-                      "WPFTweaksHome",
-                      "WPFTweaksDiskCleanup",
-                      "WPFTweaksRecallOff",
-                      "WPFTweaksLoc",
-                      "WPFTweaksDisableWpbtExecution",
-                      "WPFTweaksIPv46",
-                      "WPFTweaksDVR"
+                      "WPFTweaksEndTaskOnTaskbar"
   ],
   "WPFFeature": [
     "WPFFeatureDisableSearchSuggestions",
