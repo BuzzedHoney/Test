@@ -5,9 +5,7 @@ if (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 Get-Process | Where-Object { $_.Name -like "*edge*" } | Stop-Process -Force
 
 $edgePath = "${env:ProgramFiles(x86)}\Microsoft\Edge\Application\*\Installer\setup.exe"
-if (Test-Path $edgePath) {
-    Start-Process -FilePath $(Resolve-Path $edgePath) -ArgumentList "--uninstall --system-level --verbose-logging --force-uninstall" -Wait
-}
+Start-Process -FilePath $(Resolve-Path $edgePath) -ArgumentList "--uninstall --system-level --verbose-logging --force-uninstall" -Wait
 
 $startMenuPaths = @(
     "$env:ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Edge.lnk",
@@ -15,9 +13,7 @@ $startMenuPaths = @(
     "$env:ALLUSERSPROFILE\Microsoft\Windows\Start Menu\Programs\Microsoft Edge.lnk"
 )
 foreach ($path in $startMenuPaths) {
-    if (Test-Path $path) {
-        Remove-Item -Path $path -Force
-    }
+    Remove-Item -Path $path -Force
 }
 
 $edgePaths = @(
@@ -32,11 +28,9 @@ $edgePaths = @(
     "$env:PUBLIC\Desktop\Microsoft Edge.lnk"
 )
 foreach ($path in $edgePaths) {
-    if (Test-Path $path) {
-        takeown /F $path /R /D Y | Out-Null
-        icacls $path /grant administrators:F /T | Out-Null
-        Remove-Item -Path $path -Recurse -Force
-    }
+    takeown /F $path /R /D Y | Out-Null
+    icacls $path /grant administrators:F /T | Out-Null
+    Remove-Item -Path $path -Recurse -Force
 }
 
 $edgeRegKeys = @(
@@ -54,15 +48,11 @@ $edgeRegKeys = @(
     "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge Update"
 )
 foreach ($key in $edgeRegKeys) {
-    if (Test-Path $key) {
-        Remove-Item -Path $key -Recurse -Force
-    }
+    Remove-Item -Path $key -Recurse -Force
 }
 
 $edgeUpdatePath = "${env:ProgramFiles(x86)}\Microsoft\EdgeUpdate\MicrosoftEdgeUpdate.exe"
-if (Test-Path $edgeUpdatePath) {
-    Start-Process $edgeUpdatePath -ArgumentList "/uninstall" -Wait
-}
+Start-Process $edgeUpdatePath -ArgumentList "/uninstall" -Wait
 
 $services = @(
     "edgeupdate",
@@ -75,9 +65,7 @@ foreach ($service in $services) {
 }
 
 $edgeSetup = Get-ChildItem -Path "${env:ProgramFiles(x86)}\Microsoft\Edge\Application\*\Installer\setup.exe"
-if ($edgeSetup) {
-    Start-Process $edgeSetup.FullName -ArgumentList "--uninstall --system-level --verbose-logging --force-uninstall" -Wait
-}
+Start-Process $edgeSetup.FullName -ArgumentList "--uninstall --system-level --verbose-logging --force-uninstall" -Wait
 
 Stop-Process -Name explorer -Force
 Start-Process explorer
