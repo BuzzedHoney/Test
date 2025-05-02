@@ -106,7 +106,7 @@ try {
     Start-Sleep -Seconds 2
     Start-Process explorer
 
-    Get-Process | Where-Object { $_.ProcessName -like "*explorer*" } | Stop-Process -Force
+    Get-Process | Where-Object { $_.ProcessName -like "*file explorer*" } | Stop-Process -Force
     Start-Sleep -Seconds 3
 }
 catch {}
