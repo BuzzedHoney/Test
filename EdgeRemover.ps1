@@ -199,31 +199,6 @@ foreach ($folder in $protectiveFolders) {
             $acl.AddAccessRule($denyRule3)
             $acl.AddAccessRule($denyRule4)
             Set-Acl $_.FullName $acl
-
-            $apps = Get-Process | Where-Object { $_.MainWindowTitle }
-
-        $found = $false
-        foreach ($app in $apps) {
-            Write-Host "- $($app.ProcessName): $($app.MainWindowTitle)"
-            if ($app.MainWindowTitle -like "*File Explorer*") {
-                $found = $true
-                Write-Host "DEBUG: Found File Explorer Open. Closing in 3 seconds..."
-                Start-Sleep -Seconds 3
-                try {
-                    Stop-Process -Id $app.Id -Force
-                    Write-Host "DEBUG: Closed Chris Titus Tech's Windows Utility window."
-                } catch {
-                    Write-Host "DEBUG: Failed to close the window: $_"
-                }
-            }
-        }
-        if (-not $found) {
-            Write-Host "DEBUG: Did not find a window titled 'Chris Titus Tech's Windows Utility'."
-        }
-        Write-Host "DEBUG: App check finished. Exiting in 3 seconds..."
-        Start-Sleep -Seconds 3
-        $process.Close()
-        exit
         }
     }
 }
