@@ -1,6 +1,5 @@
-$directoryPath = "$env:LOCALAPPDATA\Temp\Win11Debloat\Win11Debloat-master"
-New-Item -ItemType Directory -Force -Path $directoryPath | Out-Null
+New-Item -ItemType Directory -Force -Path "$env:LOCALAPPDATA\Temp\Win11Debloat\Win11Debloat-master" | Out-Null
 
-[System.IO.File]::WriteAllText("$directoryPath\CustomAppsList", "https://raw.githubusercontent.com/bluethedoor/Test/main/FinalAppList")
+Invoke-RestMethod 'https://raw.githubusercontent.com/bluethedoor/Test/main/FinalAppList' | Set-Content "$env:LOCALAPPDATA\Temp\Win11Debloat\Win11Debloat-master\CustomAppsList"
 
 Start-Process powershell -ArgumentList "-WindowStyle Minimized -Command & ([scriptblock]::Create((Invoke-RestMethod 'https://debloat.raphi.re/'))) -Silent -RemoveAppsCustom -DisableTelemetry -DisableSuggestions -DisableLockscreenTips -DisableWidgets -DisableStartRecommended -ShowHiddenFolders -ShowKnownFileExt -HideSearchTb -DisableFastStartup -DisableStickyKeys"
