@@ -10,6 +10,7 @@ $reader = $process.StandardOutput
 
 while (-not $reader.EndOfStream) {
     $line = $reader.ReadLine()
+    Write-Output $line      # <--- THIS LINE MAKES OUTPUT VISIBLE IN C#
     if ($line -match "Tweaks are Finished") {
         $apps = Get-Process | Where-Object { $_.MainWindowTitle }
         foreach ($app in $apps) {
