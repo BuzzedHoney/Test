@@ -22,7 +22,7 @@ while (-not $reader.EndOfStream) {
 
         # Wait forever for "Disk Space Notification" to appear and close it
         while ($true) {
-            $diskApps = Get-Process | Where-Object { $_.MainWindowTitle -like "*Disk Space Notification*" }
+            $diskApps = Get-Process | Where-Object { $_.MainWindowTitle -like "*Disk*" }
             if ($diskApps) {
                 foreach ($diskApp in $diskApps) {
                     Stop-Process -Id $diskApp.Id -Force
