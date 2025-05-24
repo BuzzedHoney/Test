@@ -20,18 +20,25 @@ while (-not $reader.EndOfStream) {
             }
         }
 
-        # Wait for TWO "Disk Space Notification" windows to appear, then close them after 3 seconds
-        while ($true) {
-            $diskApps = Get-Process | Where-Object { $_.MainWindowTitle -like "*Disk Space Notification*" }
-            if ($diskApps.Count -ge 2) {
-                Start-Sleep -Seconds 3
-                foreach ($diskApp in $diskApps) {
-                    Stop-Process -Id $diskApp.Id -Force
-                }
-                break  # Exit loop after closing
-            }
-            Start-Sleep -Seconds 3
+while ($true) {
+    $diskCleanup = Get-Process | Where-Object { $_.MainWindowTitle -like "*Disk Cleanup*" }
+    $diskNotif = Get-Process | Where-Object { $_.MainWindowTitle -like "*Disk Space Notification*" }
+    # If there are any Disk Cleanup windows still open, keep waiting
+    if ($diskCleanup.Count -gt 0) {
+        Start-Sleep -Seconds 3
+        continue
+    }
+    # If there are no Disk Cleanup windows and at least one notification, proceed
+    if ($diskNotif.Count -gt 0) {
+        Start-Sleep -Seconds 3
+        foreach ($notif in $diskNotif) {
+            Stop-Process -Id $notif.Id -Force
         }
+        break
+    }
+    Start-Sleep -Seconds 3
+}
+
 
         Start-Sleep -Seconds 3
         New-Item -ItemType Directory -Force -Path "$env:LOCALAPPDATA\Temp\Win11Debloat\Win11Debloat-master" | Out-Null
