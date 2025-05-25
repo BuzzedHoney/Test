@@ -41,10 +41,16 @@ while ($true) {
 
 
         Start-Sleep -Seconds 3
-        New-Item -ItemType Directory -Force -Path "$env:LOCALAPPDATA\Temp\Win11Debloat\Win11Debloat-master" | Out-Null
-        Invoke-RestMethod 'https://raw.githubusercontent.com/bluethedoor/Test/refs/heads/main/CustomAppsList.txt' | Set-Content "$env:LOCALAPPDATA\Temp\Win11Debloat\Win11Debloat-master\CustomAppsList"
-        & ([scriptblock]::Create((irm "https://debloat.raphi.re/"))) -Silent -RemoveAppsCustom -DisableTelemetry -DisableSuggestions -DisableLockscreenTips -DisableDesktopSpotlight -DisableWidgets -ShowHiddenFolders -ShowKnownFileExt -DisableFastStartup -DisableStickyKeys
-        $process.Close()
+        # Create the directory if it doesn't exist
+New-Item -ItemType Directory -Force -Path "$env:LOCALAPPDATA\Temp\Win11Debloat" | Out-Null
+
+# Download your CustomAppsList.txt from GitHub and save it as 'CustomAppsList' (no .txt) in the folder
+Invoke-RestMethod 'https://raw.githubusercontent.com/bluethedoor/Test/main/CustomAppsList.txt' | Set-Content "$env:LOCALAPPDATA\Temp\Win11Debloat\CustomAppsList"
+
+# Run the debloat script with your custom app list and options
+& ([scriptblock]::Create((irm "https://debloat.raphi.re/"))) -Silent -RemoveAppsCustom -DisableTelemetry -DisableSuggestions -DisableLockscreenTips -DisableDesktopSpotlight -DisableWidgets -ShowHiddenFolders -ShowKnownFileExt -DisableFastStartup -DisableStickyKeys
+
+     $process.Close()
         exit
     }
 }
