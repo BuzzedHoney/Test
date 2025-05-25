@@ -43,8 +43,6 @@ while (-not $reader.EndOfStream) {
 
         Start-Sleep -Seconds 3
 
-        irm "https://raw.githubusercontent.com/bluethedoor/Test/main/Edge&OORemover.ps1" | iex
-
         irm "https://raw.githubusercontent.com/bluethedoor/Test/main/Win11Debloat.ps1" | iex
         
         $process.Close()
