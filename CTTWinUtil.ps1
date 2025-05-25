@@ -43,9 +43,7 @@ while (-not $reader.EndOfStream) {
 
         Start-Sleep -Seconds 3
 
-    irm "https://raw.githubusercontent.com/bluethedoor/Test/main/Edge&OORemover.ps1" | iex
-
-                New-Item -ItemType Directory -Force -Path "$env:LOCALAPPDATA\Temp\Win11Debloat" | Out-Null
+        New-Item -ItemType Directory -Force -Path "$env:LOCALAPPDATA\Temp\Win11Debloat" | Out-Null
 
         Invoke-RestMethod 'https://raw.githubusercontent.com/bluethedoor/Test/main/CustomAppsList.txt' | Set-Content "$env:LOCALAPPDATA\Temp\Win11Debloat\CustomAppsList"
 
