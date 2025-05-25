@@ -84,3 +84,17 @@ Viber
 WinZipUniversal
 Wunderlist
 XING
+Microsoft.BingSearch                   # Web Search from Microsoft Bing (Integrates into Windows Search)
+Microsoft.Copilot                      # New Windows Copilot app
+Microsoft.GetHelp                      # Required for some Windows 11 Troubleshooters
+Microsoft.MSPaint                      # Paint 3D
+Microsoft.OneDrive                     # OneDrive consumer
+Microsoft.Paint                        # Classic Paint
+Microsoft.Whiteboard                   # Only preinstalled on devices with touchscreen and/or pen support
+Microsoft.YourPhone                    # Phone link
+MicrosoftWindows.CrossDevice           # Phone integration within File Explorer, Camera and more
+Microsoft.People                       # Required for & included with Mail & Calendar
+Microsoft.PowerAutomateDesktop
+Microsoft.RemoteDesktop
+Microsoft.Windows.DevHome
+Microsoft.windowscommunicationsapps    # Mail & Calendar
