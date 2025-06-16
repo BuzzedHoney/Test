@@ -76,7 +76,6 @@ Royal Revolt
 Shazam
 Sidia.LiveWallpaper
 SlingTV
-Spotify
 TikTok
 TuneInRadio
 Twitter
@@ -88,7 +87,6 @@ Microsoft.BingSearch                   # Web Search from Microsoft Bing (Integra
 Microsoft.Copilot                      # New Windows Copilot app
 Microsoft.GetHelp                      # Required for some Windows 11 Troubleshooters
 Microsoft.MSPaint                      # Paint 3D
-Microsoft.OneDrive                     # OneDrive consumer
 Microsoft.Paint                        # Classic Paint
 Microsoft.Whiteboard                   # Only preinstalled on devices with touchscreen and/or pen support
 Microsoft.YourPhone                    # Phone link
