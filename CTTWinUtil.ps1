@@ -15,7 +15,7 @@ while (-not $reader.EndOfStream) {
     if ($line -match "Tweaks are Finished") {
         $apps = Get-Process | Where-Object { $_.MainWindowTitle }
         foreach ($app in $apps) {
-            if ($app.MainWindowTitle -like "*Chris Titus Tech's Windows Utility*") {
+            if ($app.MainWindowTitle -like "*WinUtil*") {
                 Start-Sleep -Seconds 3
                 Stop-Process -Id $app.Id -Force
             }
