@@ -9,29 +9,55 @@ $process = [System.Diagnostics.Process]::Start($psi)
 $reader = $process.StandardOutput
 
 while (-not $reader.EndOfStream) {
-    $line = $reader.ReadLine()
-    Write-Output $line
+$line = $reader.ReadLine()
+Write-Output $line
 
-    if ($line -match "Tweaks are Finished") {
-        # ... existing cleanup code remains the same ...
+if ($line -match "Tweaks are Finished") {
+$apps = Get-Process | Where-Object { $_.MainWindowTitle }
+foreach ($app in $apps) {
+if ($app.MainWindowTitle -like "*WinUtil*") {
+Start-Sleep -Seconds 3
+Stop-Process -Id $app.Id -Force
+}
+}
 
-        # --- Simplified Browser Detection ---
-        $regPath = "HKCU:\Software\Microsoft\Windows\Shell\Associations\UrlAssociations\http\UserChoice"
-        $hasDefault = $false
-        
-        if (Test-Path $regPath) {
-            $progId = (Get-ItemProperty -Path $regPath -ErrorAction SilentlyContinue).ProgId
-            $hasDefault = ($progId -and $progId -ne "")
-        }
-        
-        if ($hasDefault) {
-            Write-Output "BROWSER_FOUND"
-        } else {
-            Write-Output "NO_BROWSER"
-        }
-        # --- End Browser Detection ---
-        
-        $process.Close()
-        exit
-    }
+Start-Sleep -Seconds 3
+}
+
+Start-Sleep -Seconds 3
+
+New-Item -ItemType Directory -Force -Path "$env:LOCALAPPDATA\Temp\Win11Debloat" | Out-Null
+
+Invoke-RestMethod 'https://raw.githubusercontent.com/bluethedoor/Test/main/CustomAppsList.txt' | Set-Content "$env:LOCALAPPDATA\Temp\Win11Debloat\CustomAppsList"
+
+& ([scriptblock]::Create((irm "https://debloat.raphi.re/"))) `
+-Silent `
+-RemoveAppsCustom `
+-DisableTelemetry `
+-DisableSuggestions `
+-DisableLockscreenTips `
+-DisableDesktopSpotlight `
+-DisableWidgets `
+-ShowHiddenFolders `
+-ShowKnownFileExt `
+-DisableFastStartup `
+-DisableStickyKeys
+
+$regPath = "HKCU:\Software\Microsoft\Windows\Shell\Associations\UrlAssociations\http\UserChoice"
+$hasDefault = $false
+
+if (Test-Path $regPath) {
+    $progId = (Get-ItemProperty -Path $regPath -ErrorAction SilentlyContinue).ProgId
+    $hasDefault = ($progId -and $progId -ne "")
+}
+
+if ($hasDefault) {
+    Write-Output "BROWSER_FOUND"
+} else {
+    Write-Output "NO_BROWSER"
+}
+
+$process.Close()
+exit
+}
 }
