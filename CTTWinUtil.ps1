@@ -21,26 +21,6 @@ while (-not $reader.EndOfStream) {
             }
         }
 
-        while ($true) {
-            $diskCleanup = Get-Process | Where-Object { $_.MainWindowTitle -like "*Disk Cleanup*" }
-            $diskNotif = Get-Process | Where-Object { $_.MainWindowTitle -like "*Disk Space Notification*" }
-
-            if ($diskCleanup.Count -gt 0) {
-                Start-Sleep -Seconds 3
-                continue
-            }
-
-            if ($diskNotif.Count -gt 0) {
-                Start-Sleep -Seconds 3
-                foreach ($notif in $diskNotif) {
-                    Stop-Process -Id $notif.Id -Force
-                }
-                break
-            }
-
-            Start-Sleep -Seconds 3
-        }
-
         Start-Sleep -Seconds 3
 
         New-Item -ItemType Directory -Force -Path "$env:LOCALAPPDATA\Temp\Win11Debloat" | Out-Null
