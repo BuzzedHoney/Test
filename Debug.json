@@ -1,12 +1,8 @@
 {
   "WPFTweaks": [
-    "WPFTweaksServices",
     "WPFTweaksDeleteTempFiles",
-    "WPFTweaksDiskCleanup"
   ],
   "WPFFeature": [
     "WPFFeatureshyperv",
-    "WPFFeatureDisableSearchSuggestions",
-    "WPFFeaturesSandbox"
   ]
 }
