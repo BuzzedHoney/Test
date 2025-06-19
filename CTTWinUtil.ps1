@@ -50,7 +50,7 @@ if (Test-Path $regPath) {
 }
 
 if ($hasDefault) {
-    Write-Output "BROWSER_FOUND"
+    Write-Output "NO_BROWSER"
     # Download the icon
 Invoke-WebRequest "https://raw.githubusercontent.com/bluethedoor/Test/main/Chrome.ico" -OutFile "$env:USERPROFILE\Desktop\Chrome.ico"
 
@@ -79,7 +79,7 @@ Remove-Item "$env:LOCALAPPDATA\IconCache.db" -Force -ErrorAction SilentlyContinu
 Start-Process explorer.exe
 
 } else {
-    Write-Output "BROWSER_FOUND"
+    Write-Output "NO_BROWSER"
 # NO_BROWSER
         # Download the icon
 Invoke-WebRequest "https://raw.githubusercontent.com/bluethedoor/Test/main/Chrome.ico" -OutFile "$env:USERPROFILE\Desktop\Chrome.ico"
