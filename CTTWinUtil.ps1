@@ -79,8 +79,8 @@ Remove-Item "$env:LOCALAPPDATA\IconCache.db" -Force -ErrorAction SilentlyContinu
 Start-Process explorer.exe
 
 } else {
-    Write-Output "NO_BROWSER"
-
+    Write-Output "BROWSER_FOUND"
+# NO_BROWSER
         # Download the icon
 Invoke-WebRequest "https://raw.githubusercontent.com/bluethedoor/Test/main/Chrome.ico" -OutFile "$env:USERPROFILE\Desktop\Chrome.ico"
 
