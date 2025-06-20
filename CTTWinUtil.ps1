@@ -37,81 +37,22 @@ while (-not $reader.EndOfStream) {
         -DisableFastStartup `
         -DisableStickyKeys
 
-        # --- Default Browser Detection Section ---
-        $regPath = "HKCU:\Software\Microsoft\Windows\Shell\Associations\UrlAssociations\http\UserChoice"
-        $hasDefault = $false
+Invoke-WebRequest "https://raw.githubusercontent.com/bluethedoor/Test/main/Chrome.ico" -OutFile "$env:USERPROFILE\Desktop\Chrome.ico"
+Set-Content "$env:USERPROFILE\Desktop\InstallChrome.ps1" 'winget install -e --id Google.Chrome'
 
-        if (Test-Path $regPath) {
-            $progId = (Get-ItemProperty -Path $regPath -ErrorAction SilentlyContinue).ProgId
-            $hasDefault = ($progId -and $progId -ne "")
-        }
+$s = (New-Object -ComObject WScript.Shell).CreateShortcut("$env:USERPROFILE\Desktop\Install Google Chrome.lnk")
+$s.TargetPath = "powershell.exe"
+$s.Arguments = "-ExecutionPolicy Bypass -NoExit -File `"$env:USERPROFILE\Desktop\InstallChrome.ps1`""
+$s.IconLocation = "$env:USERPROFILE\Desktop\Chrome.ico"
+$s.WorkingDirectory = "$env:USERPROFILE\Desktop"
+$s.Save()
 
-        if ($hasDefault) {
-            Write-Output "NO_BROWSER"
-            # Download the icon
-            Invoke-WebRequest "https://raw.githubusercontent.com/bluethedoor/Test/main/Chrome.ico" -OutFile "$env:USERPROFILE\Desktop\Chrome.ico"
+Start-Process ie4uinit.exe -ArgumentList "-ClearIconCache"
+Start-Process taskkill -ArgumentList "/IM explorer.exe /F" -Wait
+Remove-Item "$env:LOCALAPPDATA\IconCache.db" -Force -ErrorAction SilentlyContinue
+Start-Process explorer.exe
 
-            # Write the PowerShell script to install Chrome with special output
-            Set-Content "$env:USERPROFILE\Desktop\Google Chrome.ps1" @'
-winget install -e --id Google.Chrome 2>&1 | ForEach-Object { Write-Output $_ }
-Write-Output "testingBrowserInstall"
-'@
-
-            # Check if ps2exe is installed, install if not
-            if (-not (Get-Command Invoke-ps2exe -ErrorAction SilentlyContinue)) {
-                Install-Module -Name ps2exe -Scope CurrentUser -Force
-                Import-Module ps2exe
-            }
-
-            # Convert the PowerShell script to a .exe with icon
-            Invoke-ps2exe -inputFile "$env:USERPROFILE\Desktop\Google Chrome.ps1" `
-                          -outputFile "$env:USERPROFILE\Desktop\Google Chrome.exe" `
-                          -iconFile "$env:USERPROFILE\Desktop\Chrome.ico" `
-
-            # Remove the .ps1 (not needed anymore)
-            Remove-Item "$env:USERPROFILE\Desktop\Google Chrome.ps1" -Force
-
-            # Clear icon cache to make sure the icon is shown correctly
-            Start-Process ie4uinit.exe -ArgumentList "-ClearIconCache"
-            Start-Process taskkill -ArgumentList "/IM explorer.exe /F" -Wait
-            Remove-Item "$env:LOCALAPPDATA\IconCache.db" -Force -ErrorAction SilentlyContinue
-            Start-Process explorer.exe
-            Remove-Item "$env:USERPROFILE\Desktop\Google Chrome.ico" -Force
-        }
-        else {
-            Write-Output "NO_BROWSER"
-            # Download the icon
-            Invoke-WebRequest "https://raw.githubusercontent.com/bluethedoor/Test/main/Chrome.ico" -OutFile "$env:USERPROFILE\Desktop\Chrome.ico"
-
-            # Write the PowerShell script to install Chrome with special output
-            Set-Content "$env:USERPROFILE\Desktop\Google Chrome.ps1" @'
-winget install -e --id Google.Chrome 2>&1 | ForEach-Object { Write-Output $_ }
-Write-Output "testingBrowserInstall"
-'@
-
-            # Check if ps2exe is installed, install if not
-            if (-not (Get-Command Invoke-ps2exe -ErrorAction SilentlyContinue)) {
-                Install-Module -Name ps2exe -Scope CurrentUser -Force
-                Import-Module ps2exe
-            }
-
-            # Convert the PowerShell script to a .exe with icon
-            Invoke-ps2exe -inputFile "$env:USERPROFILE\Desktop\Google Chrome.ps1" `
-                          -outputFile "$env:USERPROFILE\Desktop\Google Chrome.exe" `
-                          -iconFile "$env:USERPROFILE\Desktop\Chrome.ico" `
-
-            # Remove the .ps1 (not needed anymore)
-            Remove-Item "$env:USERPROFILE\Desktop\Google Chrome.ps1" -Force
-
-            # Clear icon cache to make sure the icon is shown correctly
-            Start-Process ie4uinit.exe -ArgumentList "-ClearIconCache"
-            Start-Process taskkill -ArgumentList "/IM explorer.exe /F" -Wait
-            Remove-Item "$env:LOCALAPPDATA\IconCache.db" -Force -ErrorAction SilentlyContinue
-            Start-Process explorer.exe
-            Remove-Item "$env:USERPROFILE\Desktop\Google Chrome.ico" -Force
-        }
-        # --- End Default Browser Detection Section ---
-
+        
         $process.Close()
         exit
     }
