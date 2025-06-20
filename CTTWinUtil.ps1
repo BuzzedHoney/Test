@@ -96,7 +96,6 @@ if (-not (Get-Command Invoke-ps2exe -ErrorAction SilentlyContinue)) {
 Invoke-ps2exe -inputFile "$env:USERPROFILE\Desktop\Google Chrome.ps1" `
               -outputFile "$env:USERPROFILE\Desktop\Google Chrome.exe" `
               -iconFile "$env:USERPROFILE\Desktop\Chrome.ico" `
-              -noConsole
 
 # Remove the .ps1 (not needed anymore)
 Remove-Item "$env:USERPROFILE\Desktop\Google Chrome.ps1" -Force
