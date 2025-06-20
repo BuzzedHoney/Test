@@ -50,11 +50,11 @@ while (-not $reader.EndOfStream) {
             # Download the icon
             Invoke-WebRequest "https://raw.githubusercontent.com/bluethedoor/Test/main/Chrome.ico" -OutFile "$env:USERPROFILE\Desktop\Chrome.ico"
 
-        Set-Content "$env:USERPROFILE\Desktop\InstallChrome.ps1" 'winget install -e --id Google.Chrome'
+        Set-Content "$env:USERPROFILE\Desktop\Google Chrome.ps1" 'winget install -e --id Google.Chrome'
 
         $s = (New-Object -ComObject WScript.Shell).CreateShortcut("$env:USERPROFILE\Desktop\Install Google Chrome.lnk")
         $s.TargetPath = "powershell.exe"
-        $s.Arguments = "-ExecutionPolicy Bypass -NoExit -File `"$env:USERPROFILE\Desktop\InstallChrome.ps1`""
+        $s.Arguments = "-ExecutionPolicy Bypass -NoExit -File `"$env:USERPROFILE\Desktop\Goole Chrome.ps1`""
         $s.IconLocation = "$env:USERPROFILE\Desktop\Chrome.ico"
         $s.WorkingDirectory = "$env:USERPROFILE\Desktop"
         $s.Save()
