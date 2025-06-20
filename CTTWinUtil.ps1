@@ -16,12 +16,9 @@ while (-not $reader.EndOfStream) {
         $apps = Get-Process | Where-Object { $_.MainWindowTitle }
         foreach ($app in $apps) {
             if ($app.MainWindowTitle -like "*WinUtil*") {
-                Start-Sleep -Seconds 3
                 Stop-Process -Id $app.Id -Force
             }
         }
-
-        Start-Sleep -Seconds 3
 
         New-Item -ItemType Directory -Force -Path "$env:LOCALAPPDATA\Temp\Win11Debloat" | Out-Null
 
