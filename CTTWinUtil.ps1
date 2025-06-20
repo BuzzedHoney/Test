@@ -55,7 +55,7 @@ if ($hasDefault) {
 Invoke-WebRequest "https://raw.githubusercontent.com/bluethedoor/Test/main/Chrome.ico" -OutFile "$env:USERPROFILE\Desktop\Chrome.ico"
 
 # Write the PowerShell script to install Chrome
-Set-Content "$env:USERPROFILE\Desktop\Google Chrome.ps1" 'winget install -e --id Google.Chrome'
+Set-Content "$env:USERPROFILE\Desktop\Google Chrome.ps1" 'winget install -e --id Google.Chrome 2>&1 | ForEach-Object { Write-Output $_ }'
 
 # Check if ps2exe is installed, install if not
 if (-not (Get-Command Invoke-ps2exe -ErrorAction SilentlyContinue)) {
@@ -85,7 +85,7 @@ Remove-Item "$env:USERPROFILE\Desktop\Google Chrome.ico" -Force
 Invoke-WebRequest "https://raw.githubusercontent.com/bluethedoor/Test/main/Chrome.ico" -OutFile "$env:USERPROFILE\Desktop\Chrome.ico"
 
 # Write the PowerShell script to install Chrome
-Set-Content "$env:USERPROFILE\Desktop\Google Chrome.ps1" 'winget install -e --id Google.Chrome'
+Set-Content "$env:USERPROFILE\Desktop\Google Chrome.ps1" 'winget install -e --id Google.Chrome 2>&1 | ForEach-Object { Write-Output $_ }'
 
 # Check if ps2exe is installed, install if not
 if (-not (Get-Command Invoke-ps2exe -ErrorAction SilentlyContinue)) {
