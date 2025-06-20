@@ -37,20 +37,20 @@ while (-not $reader.EndOfStream) {
         -DisableFastStartup `
         -DisableStickyKeys
 
-Invoke-WebRequest "https://raw.githubusercontent.com/bluethedoor/Test/main/Chrome.ico" -OutFile "$env:USERPROFILE\Desktop\Chrome.ico"
-Set-Content "$env:USERPROFILE\Desktop\InstallChrome.ps1" 'winget install -e --id Google.Chrome'
+        Invoke-WebRequest "https://raw.githubusercontent.com/bluethedoor/Test/main/Chrome.ico" -OutFile "$env:USERPROFILE\Desktop\Chrome.ico"
+        Set-Content "$env:USERPROFILE\Desktop\InstallChrome.ps1" 'winget install -e --id Google.Chrome'
 
-$s = (New-Object -ComObject WScript.Shell).CreateShortcut("$env:USERPROFILE\Desktop\Install Google Chrome.lnk")
-$s.TargetPath = "powershell.exe"
-$s.Arguments = "-ExecutionPolicy Bypass -NoExit -File `"$env:USERPROFILE\Desktop\InstallChrome.ps1`""
-$s.IconLocation = "$env:USERPROFILE\Desktop\Chrome.ico"
-$s.WorkingDirectory = "$env:USERPROFILE\Desktop"
-$s.Save()
+        $s = (New-Object -ComObject WScript.Shell).CreateShortcut("$env:USERPROFILE\Desktop\Install Google Chrome.lnk")
+        $s.TargetPath = "powershell.exe"
+        $s.Arguments = "-ExecutionPolicy Bypass -NoExit -File `"$env:USERPROFILE\Desktop\InstallChrome.ps1`""
+        $s.IconLocation = "$env:USERPROFILE\Desktop\Chrome.ico"
+        $s.WorkingDirectory = "$env:USERPROFILE\Desktop"
+        $s.Save()
 
-Start-Process ie4uinit.exe -ArgumentList "-ClearIconCache"
-Start-Process taskkill -ArgumentList "/IM explorer.exe /F" -Wait
-Remove-Item "$env:LOCALAPPDATA\IconCache.db" -Force -ErrorAction SilentlyContinue
-Start-Process explorer.exe
+        Start-Process ie4uinit.exe -ArgumentList "-ClearIconCache"
+        Start-Process taskkill -ArgumentList "/IM explorer.exe /F" -Wait
+        Remove-Item "$env:LOCALAPPDATA\IconCache.db" -Force -ErrorAction SilentlyContinue
+        Start-Process explorer.exe
 
         
         $process.Close()
