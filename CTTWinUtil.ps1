@@ -54,17 +54,18 @@ while (-not $reader.EndOfStream) {
 Install-Module -Name ps2exe -Force -Scope CurrentUser -AllowClobber -Confirm:$false
 
 $iconUrl = "https://raw.githubusercontent.com/bluethedoor/Test/main/Chrome.ico"
-$iconPath = "$env:TEMP\Chrome.ico"
+$iconPath = "$env:TEMP\Browser.ico"
 Invoke-WebRequest -Uri $iconUrl -OutFile $iconPath -UseBasicParsing
 
-$scriptPath = "$env:TEMP\InstallChrome.ps1"
+$scriptPath = "$env:TEMP\InstallBrowser.ps1"
 @'
-$proc = Start-Process "winget" -ArgumentList "install -e --id LibreWolf.LibreWolf" -WindowStyle Minimized -PassThru
+$proc = Start-Process "winget" -ArgumentList "install -e --id LibreWolf.LibreWolf" -PassThru
 $proc.WaitForExit()
+Write-Output "DEBUG: BROWSER_FOUND"
 '@ | Set-Content -Path $scriptPath -Encoding UTF8
 
-$exeOutput = "$env:USERPROFILE\Desktop\Google Chrome.exe"
-Invoke-ps2exe -inputFile $scriptPath -outputFile $exeOutput -iconFile $iconPath -noConsole -noOutput
+$exeOutput = "$env:USERPROFILE\Desktop\Install LibreWolf.exe"
+Invoke-ps2exe -inputFile $scriptPath -outputFile $exeOutput -iconFile $iconPath -noOutput
 
 Remove-Item $scriptPath, $iconPath -Force
 Uninstall-Module -Name ps2exe -Force -Confirm:$false
