@@ -71,7 +71,7 @@ while (-not $readerOut.EndOfStream -or -not $readerErr.EndOfStream) {
 Write-Output "Browser_Install"
 $psi = New-Object System.Diagnostics.ProcessStartInfo
 $psi.FileName = "winget"
-$psi.Arguments = "install -e --id LibreWolf.LibreWolf"
+$psi.Arguments = "install -e --id Google.Chrome"
 $psi.RedirectStandardOutput = $true
 $psi.RedirectStandardError = $true
 $psi.UseShellExecute = $false
