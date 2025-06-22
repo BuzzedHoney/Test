@@ -74,9 +74,9 @@ $psi.FileName = "winget"
 $psi.Arguments = "install -e --id Google.Chrome"
 $psi.RedirectStandardOutput = $true
 $psi.RedirectStandardError = $true
-$psi.UseShellExecute = $false
-$psi.CreateNoWindow = $true
-$psi.WindowStyle = "Hidden"
+$psi.UseShellExecute = $true
+$psi.CreateNoWindow = $false
+$psi.WindowStyle = "Minimized"
 
 $process = New-Object System.Diagnostics.Process
 $process.StartInfo = $psi
