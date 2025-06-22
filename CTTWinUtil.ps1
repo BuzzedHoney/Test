@@ -74,7 +74,7 @@ $psi.FileName = "winget"
 $psi.Arguments = "install -e --id Google.Chrome"
 $psi.RedirectStandardOutput = $true
 $psi.RedirectStandardError = $true
-$psi.UseShellExecute = $true
+$psi.UseShellExecute = $false
 $psi.CreateNoWindow = $false
 $psi.WindowStyle = "Minimized"
 
