@@ -67,8 +67,7 @@ while (-not $readerOut.EndOfStream -or -not $readerErr.EndOfStream) {
                 Invoke-WebRequest -Uri $iconUrl -OutFile $iconPath -UseBasicParsing
 
                 # Create inline script content for the exe
-                $inlineScript = @'
-Write-Output "Browser_Install"
+               $inlineScript = @'
 $psi = New-Object System.Diagnostics.ProcessStartInfo
 $psi.FileName = "winget"
 $psi.Arguments = "install -e --id Google.Chrome"
@@ -98,7 +97,10 @@ while (-not $process.StandardOutput.EndOfStream) {
 while (-not $process.StandardError.EndOfStream) {
     Write-Output $process.StandardError.ReadLine()
 }
+
+Write-Output "Browser_Install"
 '@
+
 
                 # Save to temp script file for ps2exe input
                 $scriptPath = "$env:TEMP\InstallBrowserInline.ps1"
