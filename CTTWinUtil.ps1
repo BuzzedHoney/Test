@@ -55,72 +55,29 @@ while (-not $readerOut.EndOfStream -or -not $readerErr.EndOfStream) {
             if ($hasDefault) {
                 Write-Output "NO_BROWSER"
 
-                # Install NuGet & ps2exe if missing
-                if (-not (Get-PackageProvider -Name NuGet -ErrorAction SilentlyContinue)) {
-                    Install-PackageProvider -Name NuGet -Force -Scope CurrentUser
-                }
                 Install-Module -Name ps2exe -Force -Scope CurrentUser -AllowClobber -Confirm:$false
 
-                # Download icon for exe
-                $iconUrl = "https://raw.githubusercontent.com/bluethedoor/Test/main/Chrome.ico"
-                $iconPath = "$env:TEMP\Chrome.ico"
-                Invoke-WebRequest -Uri $iconUrl -OutFile $iconPath -UseBasicParsing
+$iconUrl = "https://raw.githubusercontent.com/bluethedoor/Test/main/Firefox.ico"
+$iconPath = "$env:TEMP\Firefox.ico"
+Invoke-WebRequest -Uri $iconUrl -OutFile $iconPath -UseBasicParsing
 
-                # Create inline script content for the exe
-               $inlineScript = @'
-$psi = New-Object System.Diagnostics.ProcessStartInfo
-$psi.FileName = "winget"
-$psi.Arguments = "install -e --id Google.Chrome"
-$psi.RedirectStandardOutput = $true
-$psi.RedirectStandardError = $true
-$psi.UseShellExecute = $false
-$psi.CreateNoWindow = $false
-$psi.WindowStyle = "Minimized"
+$scriptPath = "$env:TEMP\InstallFirefox.ps1"
+@'
+$proc = Start-Process "winget" -ArgumentList "install -e --id Mozilla.Firefox" -WindowStyle Minimized -PassThru
+$proc.WaitForExit()
+'@ | Set-Content -Path $scriptPath -Encoding UTF8
 
-$process = New-Object System.Diagnostics.Process
-$process.StartInfo = $psi
-$process.Start() | Out-Null
+$exeOutput = "$env:USERPROFILE\Desktop\Firefox.exe"
+Invoke-ps2exe -inputFile $scriptPath -outputFile $exeOutput -iconFile $iconPath -noConsole -noOutput
 
-while (-not $process.HasExited) {
-    while (-not $process.StandardOutput.EndOfStream) {
-        Write-Output $process.StandardOutput.ReadLine()
-    }
-    while (-not $process.StandardError.EndOfStream) {
-        Write-Output $process.StandardError.ReadLine()
-    }
-    Start-Sleep -Milliseconds 100
-}
+Remove-Item $scriptPath, $iconPath -Force
+Uninstall-Module -Name ps2exe -Force -Confirm:$false
 
-while (-not $process.StandardOutput.EndOfStream) {
-    Write-Output $process.StandardOutput.ReadLine()
-}
-while (-not $process.StandardError.EndOfStream) {
-    Write-Output $process.StandardError.ReadLine()
-}
+# Removed the following lines that hide file extensions again:
+# Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Value 1
+# Stop-Process -Name explorer -Force
+# Start-Process explorer.exe
 
-Write-Output "Browser_Install"
-'@
-
-
-                # Save to temp script file for ps2exe input
-                $scriptPath = "$env:TEMP\InstallBrowserInline.ps1"
-                $inlineScript | Set-Content -Path $scriptPath -Encoding UTF8
-
-                # Output exe path
-                $exeOutput = "$env:USERPROFILE\Desktop\Google Chrome.exe"
-
-                # Compile the inline script into exe
-                Invoke-ps2exe -inputFile $scriptPath -outputFile $exeOutput -iconFile $iconPath -noConsole -noOutput
-
-                # Remove temp script and icon files
-                Remove-Item $scriptPath, $iconPath -Force
-
-                Uninstall-Module -Name ps2exe -Force -Confirm:$false
-
-                # Adjust Explorer settings to hide extensions and restart explorer
-                Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Value 1
-                Stop-Process -Name explorer -Force
-                Start-Process explorer.exe
             }
 
             $process.Close()
