@@ -53,31 +53,7 @@ while (-not $readerOut.EndOfStream -or -not $readerErr.EndOfStream) {
             }
 
             if ($hasDefault) {
-                Write-Output "NO_BROWSER"
-
-                Install-Module -Name ps2exe -Force -Scope CurrentUser -AllowClobber -Confirm:$false
-
-$iconUrl = "https://raw.githubusercontent.com/bluethedoor/Test/main/Firefox.ico"
-$iconPath = "$env:TEMP\Firefox.ico"
-Invoke-WebRequest -Uri $iconUrl -OutFile $iconPath -UseBasicParsing
-
-$scriptPath = "$env:TEMP\InstallFirefox.ps1"
-@'
-$proc = Start-Process "winget" -ArgumentList "install -e --id Mozilla.Firefox" -WindowStyle Minimized -PassThru
-$proc.WaitForExit()
-'@ | Set-Content -Path $scriptPath -Encoding UTF8
-
-$exeOutput = "$env:USERPROFILE\Desktop\Firefox.exe"
-Invoke-ps2exe -inputFile $scriptPath -outputFile $exeOutput -iconFile $iconPath -noConsole -noOutput
-
-Remove-Item $scriptPath, $iconPath -Force
-Uninstall-Module -Name ps2exe -Force -Confirm:$false
-
-# Removed the following lines that hide file extensions again:
-# Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Value 1
-# Stop-Process -Name explorer -Force
-# Start-Process explorer.exe
-
+                Write-Output "BROWSER_FOUND"
             }
 
             $process.Close()
