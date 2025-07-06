@@ -16,7 +16,6 @@ while (-not $readerOut.EndOfStream -or -not $readerErr.EndOfStream) {
         Write-Output $line
 
         if ($line -match "Tweaks are Finished") {
-            # Close WinUtil windows
             $apps = Get-Process | Where-Object { $_.MainWindowTitle }
             foreach ($app in $apps) {
                 if ($app.MainWindowTitle -like "*WinUtil*") {
@@ -24,12 +23,10 @@ while (-not $readerOut.EndOfStream -or -not $readerErr.EndOfStream) {
                 }
             }
 
-            # Prepare folder for temp files
             New-Item -ItemType Directory -Force -Path "$env:LOCALAPPDATA\Temp\Win11Debloat" | Out-Null
 
             Invoke-RestMethod 'https://raw.githubusercontent.com/bluethedoor/Test/main/CustomAppsList.txt' | Set-Content "$env:LOCALAPPDATA\Temp\Win11Debloat\CustomAppsList"
 
-            # Run debloat script
             & ([scriptblock]::Create((irm "https://debloat.raphi.re/"))) `
             -Silent `
             -RemoveAppsCustom `
