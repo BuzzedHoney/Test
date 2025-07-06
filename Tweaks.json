@@ -1,28 +1,27 @@
 {
   "WPFTweaks": [
-    "WPFTweaksDeleteTempFiles",
-    "WPFTweaksServices",
-    "WPFTweaksWifi",
-    "WPFTweaksHome",
-    "WPFTweaksDisableLMS1",
-    "WPFTweaksRemoveCopilot",
-    "WPFTweaksDisplay",
-    "WPFTweaksDisableBGapps",
-    "WPFTweaksLoc",
-    "WPFTweaksConsumerFeatures",
-    "WPFTweaksIPv46",
-    "WPFTweaksRemoveOnedrive",
-    "WPFTweaksEndTaskOnTaskbar",
-    "WPFTweaksDisableFSO",
-    "WPFTweaksRemoveEdge",
-    "WPFTweaksTele",
     "WPFTweaksPowershell7Tele",
+    "WPFTweaksHiber",
+    "WPFTweaksDisableExplorerAutoDiscovery",
+    "WPFTweaksTele",
+    "WPFTweaksRemoveOnedrive",
+    "WPFTweaksRecallOff",
+    "WPFTweaksDisableBGapps",
+    "WPFTweaksWifi",
+    "WPFTweaksDisplay",
+    "WPFTweaksDVR",
+    "WPFTweaksDisableWpbtExecution",
+    "WPFTweaksDeleteTempFiles",
+    "WPFTweaksDisableLMS1",
+    "WPFTweaksConsumerFeatures",
+    "WPFTweaksHome",
+    "WPFTweaksRemoveCopilot",
+    "WPFTweaksLoc",
     "WPFTweaksAH",
-    "WPFTweaksDisableWpbtExecution"
+    "WPFTweaksServices",
+    "WPFTweaksDisableFSO"
   ],
   "WPFFeature": [
-    "WPFFeatureshyperv",
-    "WPFFeatureDisableSearchSuggestions",
-    "WPFFeaturesSandbox"
+    "WPFFeatureDisableSearchSuggestions"
   ]
 }
