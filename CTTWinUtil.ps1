@@ -43,19 +43,6 @@ while (-not $readerOut.EndOfStream -or -not $readerErr.EndOfStream) {
             -DisableFastStartup `
             -DisableStickyKeys
 
-            # Check if default browser is set
-            $regPath = "HKCU:\Software\Microsoft\Windows\Shell\Associations\UrlAssociations\http\UserChoice"
-            $hasDefault = $false
-
-            if (Test-Path $regPath) {
-                $progId = (Get-ItemProperty -Path $regPath -ErrorAction SilentlyContinue).ProgId
-                $hasDefault = ($progId -and $progId -ne "")
-            }
-
-            if ($hasDefault) {
-                Write-Output "BROWSER_FOUND"
-            }
-
             $process.Close()
             exit
         }
