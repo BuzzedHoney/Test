@@ -36,14 +36,14 @@ while (-not $readerOut.EndOfStream -or -not $readerErr.EndOfStream) {
             -DisableLockscreenTips `
             -DisableDesktopSpotlight `
             -DisableWidgets `
-            -ShowHiddenFolders `
-            -ShowKnownFileExt `
             -DisableFastStartup `
             -DisableStickyKeys `
             -DisableCopilot `
             -DisableMouseAcceleration `
             -DisableRecall `
-            -DisableBing
+            -DisableBing `
+#           -ShowHiddenFolders `
+#           -ShowKnownFileExt
             
 
             $process.Close()
