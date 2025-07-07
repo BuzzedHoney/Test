@@ -31,6 +31,7 @@ while (-not $readerOut.EndOfStream -or -not $readerErr.EndOfStream) {
             -Silent `
             -RemoveAppsCustom `
             -DisableTelemetry `
+            -DisableSettings365Ads `
             -DisableSuggestions `
             -DisableLockscreenTips `
             -DisableDesktopSpotlight `
@@ -38,7 +39,12 @@ while (-not $readerOut.EndOfStream -or -not $readerErr.EndOfStream) {
             -ShowHiddenFolders `
             -ShowKnownFileExt `
             -DisableFastStartup `
-            -DisableStickyKeys
+            -DisableStickyKeys `
+            -DisableCopilot `
+            -DisableMouseAcceleration `
+            -DisableRecall `
+            -DisableBing
+            
 
             $process.Close()
             exit
