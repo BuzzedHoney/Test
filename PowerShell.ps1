@@ -41,9 +41,7 @@ while (-not $readerOut.EndOfStream -or -not $readerErr.EndOfStream) {
             -DisableCopilot `
             -DisableMouseAcceleration `
             -DisableRecall `
-            -DisableBing `
-#           -ShowHiddenFolders `
-#           -ShowKnownFileExt
+            -DisableBing
             
 
             $process.Close()
