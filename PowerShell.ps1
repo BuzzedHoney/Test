@@ -42,7 +42,6 @@ while (-not $readerOut.EndOfStream -or -not $readerErr.EndOfStream) {
             -DisableMouseAcceleration `
             -DisableRecall `
             -DisableBing
-            
 
             $process.Close()
             exit
