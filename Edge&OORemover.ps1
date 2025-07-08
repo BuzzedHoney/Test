@@ -229,4 +229,4 @@ $oneDriveRegKeys = @(
 )
 RemoveRegistryKeys -Keys $oneDriveRegKeys
 
-Write-Host "Done :D"
+Write-Host "Successfully Removed Edge, Outlook, & OneDrive."
