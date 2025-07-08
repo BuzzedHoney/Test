@@ -20,8 +20,5 @@
     "WPFTweaksAH",
     "WPFTweaksServices",
     "WPFTweaksDisableFSO"
-  ],
-  "WPFFeature": [
-    "WPFFeatureDisableSearchSuggestions"
-  ]
+  ] 
 }
