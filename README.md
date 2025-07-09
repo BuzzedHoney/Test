@@ -9,8 +9,6 @@
 * **Removes Edge, Outlook, OneDrive and completely**
 * **Auto-cleans taskbar, shortcuts, telemetry [("Data Collection")](https://en.wikipedia.org/wiki/Spyware), and useless shit (yes im talking about copilot AI)**
 
-##  Main Features
-
 ###  Made for Everyone
 
 Simple, fast, extremely effective. You don’t need to be a nerd to figure out how to use it. Just run it.
