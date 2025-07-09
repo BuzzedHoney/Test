@@ -39,7 +39,9 @@ Only disables features that are safe to remove. Core functionality and stability
 
 Removes **over 100+ preinstalled apps**, including:
 
-* App list coming soon
+| Tweak                                 | Description                                        |
+| ------------------------------------- | -------------------------------------------------- |
+| N/A                                   | App list coming soon                               |
 
 **Runs the following privacy and UX improvements:**
 
