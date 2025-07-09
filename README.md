@@ -78,7 +78,7 @@ It’s a [killshot](https://www.youtube.com/watch?v=FxQTY-W6GIo) for Microsoft�
 
 ##  Summary
 
-This isn’t a tech showcase. It’s a **no-bullshit debloater that works**:
+It’s a **no bullshit debloater that works**:
 
 * Simple for beginners
 * Brutal to Microsoft bloat
