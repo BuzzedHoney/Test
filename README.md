@@ -38,25 +38,7 @@ Uses Microsoft-preferred configuration techniques:
 
 | Tweak                                 | Description                                        |
 | ------------------------------------- | -------------------------------------------------- |
-| WPFTweaksPowershell7Tele              | Disable Telemetry in PowerShell 7                  |
-| WPFTweaksHiber                        | Disable Hibernation                                |
-| WPFTweaksDisableExplorerAutoDiscovery | Disable network folder auto-discovery in Explorer  |
-| WPFTweaksTele                         | Disable general system telemetry                   |
-| WPFTweaksRecallOff                    | Turn off Windows Recall feature                    |
-| WPFTweaksDisableBGapps                | Stop background apps from running                  |
-| WPFTweaksWifi                         | Disable Wi-Fi auto-connect & known network sharing |
-| WPFTweaksDisplay                      | Disable Display content telemetry                  |
-| WPFTweaksDVR                          | Disable Xbox Game DVR and background recording     |
-| WPFTweaksDisableWpbtExecution         | Disable WPBT execution on boot                     |
-| WPFTweaksDeleteTempFiles              | Clean up system temp files                         |
-| WPFTweaksDisableLMS1                  | Disable Intel LMS Service                          |
-| WPFTweaksConsumerFeatures             | Disable Microsoft consumer experience/promotions   |
-| WPFTweaksHome                         | Apply core tweaks tailored for Home edition        |
-| WPFTweaksRemoveCopilot                | Remove Copilot completely                          |
-| WPFTweaksLoc                          | Disable location tracking                          |
-| WPFTweaksAH                           | Adjust animation & accessibility for performance   |
-| WPFTweaksServices                     | Disable redundant telemetry-related services       |
-| WPFTweaksDisableFSO                   | Disable Feedback & Suggestions Online services     |
+| N/A                                   | Feature list coming soon                           |
 
 ---
 
@@ -64,27 +46,11 @@ Uses Microsoft-preferred configuration techniques:
 
 Removes **over 100+ preinstalled apps**, including:
 
-* Microsoft built-ins like: Clipchamp, Feedback Hub, Sticky Notes, Maps, Weather, Cortana, Copilot, OneNote, Skype
-* Web-junk like: Bing News, Bing Travel, Bing Weather, Bing Finance, Bing Translator
-* 3rd-party preinstalls like: TikTok, Netflix, Hulu, Instagram, Facebook, Candy Crush, Duolingo, Prime Video, SpeedTest, Viber, Shazam
-
-Each entry is stripped from the system using clean PowerShell logic that targets both user-installed and provisioned packages.
+* App list coming soon
 
 **Runs the following privacy and UX improvements:**
 
-* `-RemoveAppsCustom` — Removes all custom apps defined in the [list](https://raw.githubusercontent.com/BuzzedHoney/Test/main/CustomAppsList)
-* `-DisableTelemetry` — Removes Microsoft spyware
-* `-DisableSettings365Ads` — Removes 365 ads from the Settings app
-* `-DisableSuggestions` — Disables [suggestions](https://en.wikipedia.org/wiki/Software_bloat) in Start menu and Settings
-* `-DisableLockscreenTips` — Turns off lockscreen tips
-* `-DisableDesktopSpotlight` — Removes rotating backgrounds and ads on desktop
-* `-DisableWidgets` — Disables Windows Widgets completely
-* `-DisableFastStartup` — Fast startup doesn't allow your computer to fully turn off after clicking shutdown
-* `-DisableStickyKeys` — Disables sticky keys popups
-* `-DisableCopilot` — Completely removes Windows Copilot
-* `-DisableMouseAcceleration` — Improves gaming and pointer precision
-* `-DisableRecall` — Prevents Windows from capturing screen history
-* `-DisableBing` — Removes Bing from Start menu search
+* `-N/A` — Descriptions coming soon
 
 ---
 
