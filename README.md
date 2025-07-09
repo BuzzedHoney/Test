@@ -73,13 +73,13 @@ Each entry is stripped from the system using clean PowerShell logic that targets
 **Runs the following privacy and UX improvements:**
 
 * `-RemoveAppsCustom` — Removes all custom apps defined in the [list](https://raw.githubusercontent.com/BuzzedHoney/Test/main/CustomAppsList)
-* `-DisableTelemetry` — Stops all available telemetry services
-* `-DisableSettings365Ads` — Removes 365 promotional content from the Settings app
-* `-DisableSuggestions` — Disables suggestions in Start menu and Settings
-* `-DisableLockscreenTips` — Turns off lockscreen suggestions and tips
+* `-DisableTelemetry` — Removes Microsoft spyware
+* `-DisableSettings365Ads` — Removes 365 ads from the Settings app
+* `-DisableSuggestions` — Disables [suggestions](https://en.wikipedia.org/wiki/Software_bloat) in Start menu and Settings
+* `-DisableLockscreenTips` — Turns off lockscreen tips
 * `-DisableDesktopSpotlight` — Removes rotating backgrounds and ads on desktop
 * `-DisableWidgets` — Disables Windows Widgets completely
-* `-DisableFastStartup` — Prevents hibernation-related bugs from hybrid shutdown
+* `-DisableFastStartup` — Fast startup doesn't allow your computer to fully turn off after clicking shutdown
 * `-DisableStickyKeys` — Disables sticky keys popups
 * `-DisableCopilot` — Completely removes Windows Copilot
 * `-DisableMouseAcceleration` — Improves gaming and pointer precision
