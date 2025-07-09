@@ -64,7 +64,7 @@ Uses Microsoft-preferred configuration techniques:
 
 Removes **over 100+ preinstalled apps**, including:
 
-* Microsoft built-ins like: Clipchamp, Feedback Hub, Sticky Notes, Maps, Weather, Cortana, Xbox, OneNote, Skype
+* Microsoft built-ins like: Clipchamp, Feedback Hub, Sticky Notes, Maps, Weather, Cortana, Copilot, OneNote, Skype
 * Web-junk like: Bing News, Bing Travel, Bing Weather, Bing Finance, Bing Translator
 * 3rd-party preinstalls like: TikTok, Netflix, Hulu, Instagram, Facebook, Candy Crush, Duolingo, Prime Video, SpeedTest, Viber, Shazam
 
