@@ -7,7 +7,7 @@
 * **Applies 10+ privacy & performance tweaks from Win11Debloat**
 * **Deletes 100+ preinstalled & store apps via Win11Debloat**
 * **Removes Edge, Outlook, and OneDrive completely**
-* **Auto-cleans taskbar, shortcuts, telemetry [("Data Collection")](https://en.wikipedia.org/wiki/Spyware), and useless shit (yes im talking about copilot AI)**
+* **Removes telemetry [("Data Collection")](https://en.wikipedia.org/wiki/Spyware), and useless shit (yes im talking about copilot AI)**
 
 ###  Made for Everyone
 
