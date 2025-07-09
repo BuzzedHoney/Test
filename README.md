@@ -47,7 +47,7 @@ Removes **over 100+ preinstalled apps**, including:
 
 ---
 
-###  Edge, Outlook, and OneDrive Destroyer
+###  Edge, Outlook, and OneDrive Remover
 
 The **Edge\&OORemover.ps1** script is the most aggressive, complete removal method for Microsoft bloatware.
 
