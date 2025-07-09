@@ -43,7 +43,9 @@ Removes **over 100+ preinstalled apps**, including:
 
 **Runs the following privacy and UX improvements:**
 
-* `-N/A` — Descriptions coming soon
+| Tweak                                 | Description                                        |
+| ------------------------------------- | -------------------------------------------------- |
+| N/A                                   | Feature list coming soon                           |
 
 ---
 
