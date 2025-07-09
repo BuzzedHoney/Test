@@ -34,7 +34,7 @@ Uses Microsoft-preferred configuration techniques:
 
 ##  Full List of Tweaks and Actions
 
-###  CTT WinUtil Tweaks [(`Tweaks.json`)](https://raw.githubusercontent.com/BuzzedHoney/Test/main/Tweaks.json)
+###  CTT WinUtil [(`Tweaks.json`)](https://raw.githubusercontent.com/BuzzedHoney/Test/main/Tweaks.json)
 
 | Tweak                                 | Description                                        |
 | ------------------------------------- | -------------------------------------------------- |
