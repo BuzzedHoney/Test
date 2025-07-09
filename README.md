@@ -23,14 +23,6 @@ All scripts are plain-text. No binaries. No obfuscation. All fully open-sourced.
 
 Only disables features that are safe to remove. Core functionality and stability are untouched.
 
-###  Microsoft-Aligned
-
-Uses Microsoft-preferred configuration techniques:
-
-* Group Policy Objects
-* PowerShell Cmdlets
-* Registry only as fallback
-
 ---
 
 ##  Full List of Tweaks and Actions
