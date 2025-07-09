@@ -74,8 +74,6 @@ The **Edge\&OORemover.ps1** script is the most aggressive, complete removal meth
 * Deletes OneDrive folders, start menu shortcuts, and registry keys
 * Cleans leftover cloud sync links
 
-It’s a [killshot](https://www.youtube.com/watch?v=FxQTY-W6GIo) for Microsoft’s most persistent shitware.
-
 ---
 
 ##  Summary
