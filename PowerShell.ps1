@@ -24,7 +24,9 @@ while (-not $readerOut.EndOfStream -or -not $readerErr.EndOfStream) {
             }
 
             irm "https://raw.githubusercontent.com/BuzzedHoney/Test/main/Edge%26OORemover.ps1" | iex
-            
+
+            irm "https://raw.githubusercontent.com/BuzzedHoney/Test/main/OSDetection.ps1" | iex
+
             New-Item -ItemType Directory -Force -Path "$env:LOCALAPPDATA\Temp\Win11Debloat" | Out-Null
 
             Invoke-RestMethod 'https://raw.githubusercontent.com/BuzzedHoney/Test/main/CustomAppsList' | Set-Content "$env:LOCALAPPDATA\Temp\Win11Debloat\CustomAppsList"
