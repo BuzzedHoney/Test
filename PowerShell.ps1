@@ -1,6 +1,6 @@
 $psi = New-Object System.Diagnostics.ProcessStartInfo
 $psi.FileName = "powershell.exe"
-$psi.Arguments = '-NoProfile -Command "iex \"& { $(irm christitus.com/win) } -Config https://raw.githubusercontent.com/BuzzedHoney/Test/main/Tweaks.json -Run\""'
+$psi.Arguments = '-NoProfile -Command "& { irm https://raw.githubusercontent.com/BuzzedHoney/Test/main/Edge%26OORemover.ps1 | iex; iex \"& { $(irm christitus.com/win) } -Config https://raw.githubusercontent.com/BuzzedHoney/Test/main/Tweaks.json -Run\" }"'
 $psi.RedirectStandardOutput = $true
 $psi.RedirectStandardError = $true
 $psi.UseShellExecute = $false
