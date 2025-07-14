@@ -7,7 +7,7 @@
 * **Applies 10+ privacy & performance tweaks from Win11Debloat**
 * **Deletes 100+ preinstalled & store apps via Win11Debloat**
 * **Removes Edge, Outlook, and OneDrive completely**
-* **Removes telemetry [("Data Collection")](https://en.wikipedia.org/wiki/Spyware), and [useless shit](https://en.wikipedia.org/wiki/Microsoft_Copilot).**
+* **Removes [telemetry](https://en.wikipedia.org/wiki/Spyware), and [useless shit](https://en.wikipedia.org/wiki/Microsoft_Copilot).**
 
 ###  Made for Everyone
 
@@ -51,7 +51,7 @@ Removes **over 100+ preinstalled apps**, including:
 
 ###  Edge, Outlook, and OneDrive Remover
 
-The **Edge\&OORemover.ps1** script is the most aggressive, complete removal method for Microsoft bloatware.
+This script is the most aggressive, complete removal method for Microsoft bloatware.
 
 ####  Edge
 
