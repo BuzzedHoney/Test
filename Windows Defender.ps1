@@ -1,6 +1,6 @@
 Set-MpPreference -DisableRealtimeMonitoring $false
 
-Set-MpPreference -AllowDevRemotePerformanceMode 0
+Set-MpPreference -PerformanceModeStatus Disabled
 
 Set-MpPreference -MAPSReporting Advanced
 
