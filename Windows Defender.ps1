@@ -1,4 +1,4 @@
-Write-Host "Applying Security Tweaks"
+Write-Host "Applying Windows Defender Tweaks"
 
 Set-MpPreference -DisableRealtimeMonitoring $false
 
