@@ -1,3 +1,5 @@
+Write-Host "Security"
+
 Set-MpPreference -DisableRealtimeMonitoring $false
 
 Set-MpPreference -PerformanceModeStatus Disabled
