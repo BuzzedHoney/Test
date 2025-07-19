@@ -1,4 +1,4 @@
-Write-Host "Security"
+Write-Host "Applying Security Tweaks"
 
 Set-MpPreference -DisableRealtimeMonitoring $false
 
