@@ -29,3 +29,5 @@ Set-NetFirewallProfile -Profile Domain,Private,Public -Enabled True
 Write-Host "Configuring Firewall"
 
 Get-NetConnectionProfile | Where-Object {$_.NetworkCategory -ne 'Public'} | ForEach-Object { Set-NetConnectionProfile -InterfaceIndex $_.InterfaceIndex -NetworkCategory Public }
+
+Write-Host "Security Tweaks Done"
