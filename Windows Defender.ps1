@@ -32,12 +32,13 @@ Get-NetConnectionProfile | Where-Object {$_.NetworkCategory -ne 'Public'} | ForE
 
 Write-Host "Security Tweaks Done"
 
-   Write-Host "Blocking Telemetry Domains..."
+try {
+    Write-Host "Blocking Telemetry Domains..."
 
     $domains = @(
+		"bing.com",
         "oca.telemetry.microsoft.com",
         "oca.microsoft.com",
-        "bing.com",
         "kmwatsonc.events.data.microsoft.com",
         "watson.telemetry.microsoft.com",
         "umwatsonc.events.data.microsoft.com",
