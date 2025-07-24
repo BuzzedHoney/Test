@@ -37,6 +37,8 @@ Start-Sleep -Seconds 3
 try {
     Write-Host "Blocking Spying Domains"
 
+    Start-Sleep -Seconds 3
+
     $domains = @(
 	"bing.com",
         "oca.telemetry.microsoft.com",
@@ -116,10 +118,8 @@ try {
         "cdn.onenote.net",
         "tile-service.weather.microsoft.com"
     )
-
     foreach ($domain in $domains) {
         $ruleName = "Block - $domain"
-
         $ruleExists = Get-NetFirewallRule -DisplayName $ruleName -ErrorAction SilentlyContinue
 
         if (-not $ruleExists) {
