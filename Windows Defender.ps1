@@ -120,7 +120,6 @@ try {
     foreach ($domain in $domains) {
         $ruleName = "Block - $domain"
 
-        # Check if rule exists
         $ruleExists = Get-NetFirewallRule -DisplayName $ruleName -ErrorAction SilentlyContinue
 
         if (-not $ruleExists) {
@@ -144,8 +143,7 @@ try {
             Write-Host "Rule already exists: $ruleName" -ForegroundColor Cyan
         }
     }
-
-    Write-Host "Security Tweaks Done"
+    Write-Host "Privacy Enhanced"
 }
 catch {
     Write-Host "An error occurred: $_" -ForegroundColor Red
