@@ -52,6 +52,12 @@ while (-not $readerOut.EndOfStream -or -not $readerErr.EndOfStream) {
             Start-Sleep -Seconds 3
 
             Write-Host "All Optimizations Complete"
+
+            Start-Sleep -Seconds 3
+
+            Write-Host "Silly Message"
+
+            Start-Sleep -Seconds 3
             
             $process.Close()
             exit
