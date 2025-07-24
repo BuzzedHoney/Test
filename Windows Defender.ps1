@@ -36,7 +36,7 @@ try {
     Write-Host "Blocking Telemetry Domains..."
 
     $domains = @(
-		"bing.com",
+	"bing.com",
         "oca.telemetry.microsoft.com",
         "oca.microsoft.com",
         "kmwatsonc.events.data.microsoft.com",
