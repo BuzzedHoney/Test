@@ -178,9 +178,7 @@ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer
 Write-Host "Disabled Task View button."
 
 $taskbarRegistryPaths = @(
-    "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband",
     "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\TaskbarMRU",
-    "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\TaskBar",
     "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
 )
 foreach ($regPath in $taskbarRegistryPaths) {
