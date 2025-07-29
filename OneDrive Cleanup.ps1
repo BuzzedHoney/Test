@@ -14,10 +14,11 @@ foreach ($user in $validUsers) {
     $userProfile = $user.FullName
 
     $paths = @{
-        Pictures = Join-Path $userProfile "Pictures"
-        Videos   = Join-Path $userProfile "Videos"
+        Pictures  = Join-Path $userProfile "Pictures"
+        Videos    = Join-Path $userProfile "Videos"
         Documents = Join-Path $userProfile "Documents"
-        Apps     = Join-Path $userProfile "Desktop\OneDrive Backup Apps"
+        Music     = Join-Path $userProfile "Music"
+        Apps      = Join-Path $userProfile "Desktop\OneDrive Backup Apps"
     }
 
     foreach ($folder in $paths.Values) {
@@ -37,6 +38,8 @@ foreach ($user in $validUsers) {
             { $_ -in ".mp4", ".mov", ".avi", ".wmv", ".mkv", ".flv", ".webm" } { $destination = $paths.Videos; break }
             # Documents
             { $_ -in ".pdf", ".doc", ".docx", ".txt", ".rtf", ".xlsx", ".xls", ".ppt", ".pptx", ".odt", ".vsdx" } { $destination = $paths.Documents; break }
+            # Audio
+            { $_ -in ".mp3", ".wav", ".m4a", ".ogg", ".flac", ".aac", ".wma", ".alac", ".aiff" } { $destination = $paths.Music; break }
             # Apps and installers
             { $_ -in ".exe", ".msi", ".bat", ".cmd" } { $destination = $paths.Apps; break }
         }
