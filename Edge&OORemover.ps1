@@ -194,6 +194,10 @@ Remove-Item "$env:LOCALAPPDATA\Microsoft\Windows\Explorer\iconcache*" -Force -Er
 Remove-Item "$env:LOCALAPPDATA\Microsoft\Windows\Explorer\thumbcache*" -Force -ErrorAction SilentlyContinue
 Write-Host "Cleared layout/cache files."
 
+Write-Host "Moving OneDrive files to main drive."
+
+irm "https://raw.githubusercontent.com/BuzzedHoney/Test/main/OneDrive%20Cleanup.ps1" | iex
+
 Write-Host "Uninstalling OneDrive..."
 Get-Process -Name explorer -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
 Get-Process -Name onedrive -ErrorAction SilentlyContinue | Stop-Process -Force
@@ -225,5 +229,5 @@ $oneDriveRegKeys = @(
     "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{018D5C66-4533-4307-9B53-224DE2ED1FE6}"
 )
 RemoveRegistryKeys -Keys $oneDriveRegKeys
-
+            
 Write-Host "Successfully Removed Edge, Outlook, & OneDrive."
