@@ -18,7 +18,7 @@ foreach ($user in $validUsers) {
         Videos    = Join-Path $userProfile "Videos"
         Documents = Join-Path $userProfile "Documents"
         Music     = Join-Path $userProfile "Music"
-        Apps      = Join-Path $userProfile "Desktop\OneDrive Backup Apps"
+        Apps      = Join-Path $userProfile "Downloads"
     }
 
     foreach ($folder in $paths.Values) {
