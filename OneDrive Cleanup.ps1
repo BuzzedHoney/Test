@@ -5,49 +5,57 @@ do {
     $cfaStatus = (Get-MpPreference).EnableControlledFolderAccess
 } while ($cfaStatus -ne 0)
 
-$usersPath = "C:\Users"
-$validUsers = Get-ChildItem $usersPath -Directory | Where-Object {
-    $_.Name -ne "Public" -and $_.Name -ne "Default" -and $_.Name -ne "Default User" -and $_.Name -ne "All Users" -and $_.Name -ne "Administrator"
+$userProfile = [Environment]::GetFolderPath("UserProfile")
+
+$excludedFolders = @(
+    "AppData", "Desktop", "Documents", "Downloads", "Music",
+    "Pictures", "Videos", "Favorites", "Links", "Saved Games",
+    "Searches", "Contacts", "3D Objects", "source"
+)
+
+\$paths = @{
+    Pictures  = Join-Path $userProfile "Pictures"
+    Videos    = Join-Path $userProfile "Videos"
+    Documents = Join-Path $userProfile "Documents"
+    Music     = Join-Path $userProfile "Music"
+    Apps      = Join-Path $userProfile "Downloads"
 }
 
-foreach ($user in $validUsers) {
-    $userProfile = $user.FullName
-
-    $paths = @{
-        Pictures  = Join-Path $userProfile "Pictures"
-        Videos    = Join-Path $userProfile "Videos"
-        Documents = Join-Path $userProfile "Documents"
-        Music     = Join-Path $userProfile "Music"
-        Apps      = Join-Path $userProfile "Downloads"
+$paths.Values | ForEach-Object {
+    if (-not (Test-Path $_)) {
+        New-Item -ItemType Directory -Path $_ -Force | Out-Null
     }
+}
 
-    foreach ($folder in $paths.Values) {
-        if (-not (Test-Path $folder)) {
-            New-Item -ItemType Directory -Path $folder -Force | Out-Null
-        }
-    }
+$folders = Get-ChildItem -Path $userProfile -Directory -Force | Where-Object {
+    $excludedFolders -notcontains $_.Name
+}
 
-    Get-ChildItem -Path $userProfile -File -Force -ErrorAction SilentlyContinue | ForEach-Object {
+foreach ($folder in $folders) {
+    Get-ChildItem -Path $folder.FullName -Recurse -File -Force -ErrorAction SilentlyContinue | ForEach-Object {
         $ext = $_.Extension.ToLowerInvariant()
         $destination = $null
 
         switch ($ext) {
-            # Images
             { $_ -in ".jpg", ".jpeg", ".png", ".bmp", ".gif", ".tiff", ".webp", ".heic", ".avif" } { $destination = $paths.Pictures; break }
-            # Videos
             { $_ -in ".mp4", ".mov", ".avi", ".wmv", ".mkv", ".flv", ".webm" } { $destination = $paths.Videos; break }
-            # Documents
             { $_ -in ".pdf", ".doc", ".docx", ".txt", ".rtf", ".xlsx", ".xls", ".ppt", ".pptx", ".odt", ".vsdx" } { $destination = $paths.Documents; break }
-            # Audio
             { $_ -in ".mp3", ".wav", ".m4a", ".ogg", ".flac", ".aac", ".wma", ".alac", ".aiff" } { $destination = $paths.Music; break }
-            # Apps and installers
             { $_ -in ".exe", ".msi", ".bat", ".cmd" } { $destination = $paths.Apps; break }
         }
 
         if ($destination) {
             try {
-                Move-Item -Path $_.FullName -Destination (Join-Path $destination $_.Name) -Force -ErrorAction Stop
-                Write-Host "Moved $($_.Name) to $destination"
+                $destPath = Join-Path $destination $_.Name
+                $i = 1
+                while (Test-Path $destPath) {
+                    $base = [System.IO.Path]::GetFileNameWithoutExtension($_.Name)
+                    $ext = $_.Extension
+                    $destPath = Join-Path $destination "$base ($i)$ext"
+                    $i++
+                }
+                Move-Item -Path $_.FullName -Destination $destPath -Force
+                Write-Host "Moved $($_.FullName) to $destPath"
             } catch {
                 Write-Host "Failed to move $($_.Name): $_"
             }
