@@ -135,7 +135,7 @@ try {
             }
         }
         else {
-            Write-Host "Rule already exists $domain"
+            Write-Host "Rule already exists for $domain"
         }
     }
     Write-Host "Privacy Enhanced"
