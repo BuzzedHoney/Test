@@ -4,7 +4,6 @@
     "WPFTweaksHiber",
     "WPFTweaksDisableExplorerAutoDiscovery",
     "WPFTweaksTele",
-    "WPFTweaksRemoveOnedrive",
     "WPFTweaksRecallOff",
     "WPFTweaksDisableBGapps",
     "WPFTweaksWifi",
@@ -19,6 +18,7 @@
     "WPFTweaksLoc",
     "WPFTweaksAH",
     "WPFTweaksServices",
-    "WPFTweaksDisableFSO"
+    "WPFTweaksDisableFSO",
+    "WPFTweaksRemoveOnedrive"
   ] 
 }
