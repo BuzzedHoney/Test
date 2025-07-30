@@ -41,9 +41,8 @@ foreach ($folder in $folders) {
             { $_ -in ".mp4", ".mov", ".avi", ".wmv", ".mkv", ".flv", ".webm" } { $destination = $paths.Videos; break }
             { $_ -in ".pdf", ".doc", ".docx", ".txt", ".rtf", ".xlsx", ".xls", ".ppt", ".pptx", ".odt", ".vsdx" } { $destination = $paths.Documents; break }
             { $_ -in ".mp3", ".wav", ".m4a", ".ogg", ".flac", ".aac", ".wma", ".alac", ".aiff" } { $destination = $paths.Music; break }
-            { $_ -in ".exe", ".msi", ".bat", ".cmd" } { $destination = $paths.Apps; break }
+            { $_ -in ".exe", ".msi", ".bat" } { $destination = $paths.Apps; break }
         }
-
         if ($destination) {
             try {
                 $destPath = Join-Path $destination $_.Name
