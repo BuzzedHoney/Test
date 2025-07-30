@@ -1,9 +1,10 @@
 {
   "WPFTweaks": [
+    "WPFTweaksServices",
+    "WPFTweaksTele",
     "WPFTweaksPowershell7Tele",
     "WPFTweaksHiber",
     "WPFTweaksDisableExplorerAutoDiscovery",
-    "WPFTweaksTele",
     "WPFTweaksRecallOff",
     "WPFTweaksDisableBGapps",
     "WPFTweaksWifi",
@@ -17,7 +18,6 @@
     "WPFTweaksRemoveCopilot",
     "WPFTweaksLoc",
     "WPFTweaksAH",
-    "WPFTweaksServices",
     "WPFTweaksDisableFSO",
     "WPFTweaksRemoveOnedrive"
   ] 
