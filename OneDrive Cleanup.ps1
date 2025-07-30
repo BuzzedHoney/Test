@@ -13,7 +13,7 @@ $excludedFolders = @(
     "Searches", "Contacts", "3D Objects", "source"
 )
 
-\$paths = @{
+$paths = @{
     Pictures  = Join-Path $userProfile "Pictures"
     Videos    = Join-Path $userProfile "Videos"
     Documents = Join-Path $userProfile "Documents"
@@ -62,5 +62,4 @@ foreach ($folder in $folders) {
         }
     }
 }
-
 Set-MpPreference -EnableControlledFolderAccess Enabled
