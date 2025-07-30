@@ -28,7 +28,7 @@ $paths.Values | ForEach-Object {
 }
 
 $folders = Get-ChildItem -Path $userProfile -Directory -Force | Where-Object {
-    $excludedFolders -notcontains $_.Name
+    $excludedFolders -notcontains $_.Name -and -not ($_.Name.StartsWith('.'))
 }
 
 foreach ($folder in $folders) {
@@ -62,4 +62,5 @@ foreach ($folder in $folders) {
         }
     }
 }
+
 Set-MpPreference -EnableControlledFolderAccess Enabled
