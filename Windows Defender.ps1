@@ -1,7 +1,5 @@
 Write-Host "Applying Security Tweaks"
 
-Write-Host "Configuring Windows Defender"
-
 Write-Host "Updating Windows Defender"
 
 Update-MpSignature
@@ -19,8 +17,6 @@ Set-MpPreference -MAPSReporting Advanced
 Set-MpPreference -SubmitSamplesConsent 0
 
 Set-MpPreference -EnableControlledFolderAccess Enabled
-
-Write-Host "Configuring Firewall"
 
 Write-Host "Enabling Firewall"
 
@@ -119,32 +115,31 @@ try {
         "tile-service.weather.microsoft.com"
     )
     foreach ($domain in $domains) {
-        $ruleName = "Block - $domain"
-        $ruleExists = Get-NetFirewallRule -DisplayName $ruleName -ErrorAction SilentlyContinue
+        $ruleExists = Get-NetFirewallRule -DisplayName $domain -ErrorAction SilentlyContinue
 
         if (-not $ruleExists) {
             $resolvedIPs = Resolve-DnsName $domain -ErrorAction SilentlyContinue | Where-Object { $_.Type -eq "A" } | Select-Object -ExpandProperty IPAddress
 
             if ($resolvedIPs) {
-                New-NetFirewallRule -DisplayName $ruleName `
+                New-NetFirewallRule -DisplayName $domain `
                                     -Direction Outbound `
                                     -Action Block `
                                     -RemoteAddress $resolvedIPs `
                                     -Profile Domain,Private,Public `
                                     -Enabled True `
                                     -Description "Blocked telemetry/tracking domain"
-                Write-Host "Blocked: $domain"
+                Write-Host "Blocked $domain"
             }
             else {
-                Write-Host "Could not resolve: $domain" -ForegroundColor Yellow
+                Write-Host "Could not resolve $domain"
             }
         }
         else {
-            Write-Host "Rule already exists: $ruleName" -ForegroundColor Cyan
+            Write-Host "Rule already exists $domain"
         }
     }
     Write-Host "Privacy Enhanced"
 }
 catch {
-    Write-Host "An error occurred: $_" -ForegroundColor Red
+    Write-Host "An error occurred: $_"
 }
