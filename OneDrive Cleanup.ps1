@@ -63,3 +63,4 @@ foreach ($folder in $folders) {
 }
 
 Set-MpPreference -EnableControlledFolderAccess Enabled
+# This is tied to the CTT WinUtil's OneDrive Tweak which moves items in one drive into the C:\Users\[Username], so I decided to add this to make it auto seperate the files based on their type into desagnated folders.
