@@ -73,4 +73,4 @@ while (-not $readerOut.EndOfStream -or -not $readerErr.EndOfStream) {
 
 $process.WaitForExit()
 $process.Close()
-# Main script optimization, calls all the others, and handles the outputs to the UI.
+# Main optimization script, calls all the others, and handles the outputs to the UI.
