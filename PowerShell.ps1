@@ -1,3 +1,4 @@
+# hi
 $psi = New-Object System.Diagnostics.ProcessStartInfo
 $psi.FileName = "powershell.exe"
 $psi.Arguments = '-NoProfile -Command "iex \"& { $(irm christitus.com/win) } -Config https://raw.githubusercontent.com/BuzzedHoney/Test/main/Tweaks.json -Run\""'
@@ -72,4 +73,4 @@ while (-not $readerOut.EndOfStream -or -not $readerErr.EndOfStream) {
 
 $process.WaitForExit()
 $process.Close()
-# hi
+# Main script optimization, calls all the others, and handles the outputs to the UI.
