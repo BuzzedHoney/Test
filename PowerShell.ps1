@@ -72,3 +72,4 @@ while (-not $readerOut.EndOfStream -or -not $readerErr.EndOfStream) {
 
 $process.WaitForExit()
 $process.Close()
+# hi
