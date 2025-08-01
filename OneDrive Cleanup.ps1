@@ -44,7 +44,6 @@ foreach ($folder in $folders) {
             { $_ -in ".exe", ".msi", ".bat" } { $destination = $paths.Apps; break }
         }
         if ($destination) {
-            try {
                 $destPath = Join-Path $destination $_.Name
                 $i = 1
                 while (Test-Path $destPath) {
@@ -54,13 +53,7 @@ foreach ($folder in $folders) {
                     $i++
                 }
                 Move-Item -Path $_.FullName -Destination $destPath -Force
-                Write-Host "Moved $($_.FullName) to $destPath"
-            } catch {
-                Write-Host "Failed to move $($_.Name): $_"
             }
         }
     }
-}
-
-Set-MpPreference -EnableControlledFolderAccess Enabled
-# This is tied to the CTT WinUtil's OneDrive Tweak which moves items in one drive into the C:\Users\[Username], so I decided to add this to make it auto seperate the files based on their type into desagnated folders.
+    Set-MpPreference -EnableControlledFolderAccess Enabled
