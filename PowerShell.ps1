@@ -1,4 +1,3 @@
-# hi
 $psi = New-Object System.Diagnostics.ProcessStartInfo
 $psi.FileName = "powershell.exe"
 $psi.Arguments = '-NoProfile -Command "iex \"& { $(irm christitus.com/win) } -Config https://raw.githubusercontent.com/BuzzedHoney/Test/main/Tweaks.json -Run\""'
@@ -26,6 +25,8 @@ while (-not $readerOut.EndOfStream -or -not $readerErr.EndOfStream) {
 
             irm "https://raw.githubusercontent.com/BuzzedHoney/Test/main/Edge%26OORemover.ps1" | iex
 
+            Start-Sleep -Seconds 3
+
             New-Item -ItemType Directory -Force -Path "$env:LOCALAPPDATA\Temp\Win11Debloat" | Out-Null
 
             Invoke-RestMethod 'https://raw.githubusercontent.com/BuzzedHoney/Test/main/CustomAppsList' | Set-Content "$env:LOCALAPPDATA\Temp\Win11Debloat\CustomAppsList"
@@ -51,13 +52,13 @@ while (-not $readerOut.EndOfStream -or -not $readerErr.EndOfStream) {
             irm "https://raw.githubusercontent.com/BuzzedHoney/Test/main/Windows%20Defender.ps1" | iex
 
             Start-Sleep -Seconds 3
-
+            
             Write-Host "All Optimizations Complete"
-
+            
             Start-Sleep -Seconds 3
-
+            
             Write-Host "Silly Message"
-
+            
             Start-Sleep -Seconds 3
             
             $process.Close()
