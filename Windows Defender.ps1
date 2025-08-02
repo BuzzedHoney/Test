@@ -1,5 +1,3 @@
-Write-Host "Applying Security Tweaks"
-
 Write-Host "Updating Windows Defender"
 
 Update-MpSignature
@@ -32,9 +30,7 @@ Start-Sleep -Seconds 3
 
 try {
     Write-Host "Blocking Spying Domains"
-
     Start-Sleep -Seconds 3
-
     $domains = @(
 	"bing.com",
         "oca.telemetry.microsoft.com",
@@ -116,7 +112,6 @@ try {
     )
     foreach ($domain in $domains) {
         $ruleExists = Get-NetFirewallRule -DisplayName $domain -ErrorAction SilentlyContinue
-
         if (-not $ruleExists) {
             $resolvedIPs = Resolve-DnsName $domain -ErrorAction SilentlyContinue | Where-Object { $_.Type -eq "A" } | Select-Object -ExpandProperty IPAddress
 
@@ -127,7 +122,7 @@ try {
                                     -RemoteAddress $resolvedIPs `
                                     -Profile Domain,Private,Public `
                                     -Enabled True `
-                                    -Description "Blocked telemetry/tracking domain"
+                                    -Description "Blocked telemetry/tracking domain" | Out-Null
                 Write-Host "Blocked $domain"
             }
             else {
