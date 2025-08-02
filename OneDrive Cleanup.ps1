@@ -62,7 +62,7 @@ foreach ($file in $files) {
             }
             Move-Item -Path $file.FullName -Destination $destPath -Force
         } catch {
-            Write-Host "Failed to sort files into directed folders"
+            Write-Host "Failed to sort OneDrive files"
         }
     }
 }
