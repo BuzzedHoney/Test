@@ -16,6 +16,7 @@ function RemoveRegistryKeys {
     }
 }
 
+Write-Host "Removing Edge"
 Get-Process | Where-Object { $_.Name -like "*edge*" } | Stop-Process -Force
 $edgePath = "${env:ProgramFiles(x86)}\Microsoft\Edge\Application\*\Installer\setup.exe"
 $resolvedEdgePath = (Resolve-Path $edgePath -ErrorAction SilentlyContinue)
